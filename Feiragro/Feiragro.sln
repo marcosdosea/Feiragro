@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeiragroWeb", "FeiragroWeb\FeiragroWeb.csproj", "{D5EE3D4C-D902-47D4-B020-A2C570B6EB56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeiragroWeb", "FeiragroWeb\FeiragroWeb.csproj", "{DF2360A2-3EBC-415D-A3BF-9FC71B4ACEE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5EE3D4C-D902-47D4-B020-A2C570B6EB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5EE3D4C-D902-47D4-B020-A2C570B6EB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5EE3D4C-D902-47D4-B020-A2C570B6EB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5EE3D4C-D902-47D4-B020-A2C570B6EB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2360A2-3EBC-415D-A3BF-9FC71B4ACEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2360A2-3EBC-415D-A3BF-9FC71B4ACEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2360A2-3EBC-415D-A3BF-9FC71B4ACEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2360A2-3EBC-415D-A3BF-9FC71B4ACEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C7AA8DCA-5FF5-42D6-B180-A1E599D6BCAE}
+		SolutionGuid = {EB22DB70-BE6D-4B6A-A588-B968C831084B}
 	EndGlobalSection
 EndGlobal
