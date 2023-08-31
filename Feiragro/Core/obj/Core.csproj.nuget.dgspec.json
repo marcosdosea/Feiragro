@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\202000008138\\Downloads\\Feiragro\\Feiragro\\Core\\Core.csproj": {}
+    "C:\\dev\\Feiragro\\Feiragro\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\202000008138\\Downloads\\Feiragro\\Feiragro\\Core\\Core.csproj": {
+    "C:\\dev\\Feiragro\\Feiragro\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\202000008138\\Downloads\\Feiragro\\Feiragro\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\dev\\Feiragro\\Feiragro\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\202000008138\\Downloads\\Feiragro\\Feiragro\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\202000008138\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\202000008138\\Downloads\\Feiragro\\Feiragro\\Core\\obj\\",
+        "projectPath": "C:\\dev\\Feiragro\\Feiragro\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\profe\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\Feiragro\\Feiragro\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\202000008138\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\profe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
