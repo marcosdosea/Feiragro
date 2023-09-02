@@ -1,8 +1,13 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 
-namespace Core
+namespace Core;
+
+public partial class Tipoproduto
 {
-    public class TipoProduto
-    {
-    }
+    public int Id { get; set; }
+
+    public string Nome { get; set; } = null!;
+
+    public virtual ICollection<Produto> Produtos { get; set; } = new List<Produto>();
 }

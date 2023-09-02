@@ -1,4 +1,8 @@
-﻿namespace Core.Service
+﻿
+
+using Core.DTO;
+
+namespace Core.Service
 {
     public interface IReservaService
     {
@@ -6,6 +10,6 @@
         public int Create(Reserva reserva);
         public int Edit(Reserva reserva);
         IEnumerable<Reserva> GetAll();
-        IEnumerable<Reserva> GetByIdFeira(int id);
+        IEnumerable<ReservaDto> GetByIdFeira(int id);
     }
 }

@@ -1,4 +1,8 @@
-﻿namespace Core.Service
+﻿
+
+using Core.DTO;
+
+namespace Core.Service
 {
     public interface IPessoaService
     {
@@ -8,6 +12,6 @@
         public bool Delete(Pessoa pessoa);
 
         IEnumerable<Pessoa> GetAll();
-        IEnumerable<Pessoa> GetByNome(string nome);
+        IEnumerable<PessoaDto> GetByNome(string nome);
     }
 }

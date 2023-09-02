@@ -1,18 +1,13 @@
-﻿
-
-
-using Core.DTO;
-
-namespace Core.Service
+﻿namespace Core.Service
 {
     public interface ITipoProdutoService
     {
-        public int Get(TipoProduto tipoProduto);
-        public int Create(TipoProduto tipoProduto);
-        public int Edit(TipoProduto tipoProduto);
-        public bool Delete(TipoProduto tipoProduto);
+        public int Get(Tipoproduto tipoProduto);
+        public int Create(Tipoproduto tipoProduto);
+        public int Edit(Tipoproduto tipoProduto);
+        public bool Delete(Tipoproduto tipoProduto);
 
-        IEnumerable<TipoProduto> GetAll();
-        IEnumerable<TipoProdutoDto> GetByNome(string nome);
+        IEnumerable<Tipoproduto> GetAll();
+        IEnumerable<Tipoproduto> GetByNome(string nome);
     }
 }
