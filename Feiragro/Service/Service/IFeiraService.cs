@@ -1,4 +1,8 @@
-﻿namespace Core.Service
+﻿
+
+using Core.DTO;
+
+namespace Core.Service
 {
     public interface IFeiraService
     {
@@ -6,6 +10,6 @@
         public int Create(Feira feira);
         public int Edit(Feira feira);
         IEnumerable<Feira> GetAll();
-        IEnumerable<Feira> GetByIdAssociacao(int id);
+        IEnumerable<FeiraDto> GetByIdAssociacao(int id);
     }
 }

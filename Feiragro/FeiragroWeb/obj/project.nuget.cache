@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "ffytch5f8kSOs8xaXWBPmrY5GcckZOnzw3rNpOTseciGg2C1iGLbf1BTaYeVEs1eGNp6N+mGiFagdvHByXyCsQ==",
+  "dgSpecHash": "/b+Mq8yBesattaRi2cs26UYNjYJ8B7yRVbY2fTP7r2+sZ7YQ5uGINHw8uJlcB4RUcUcoNFe/DyJ49wUyMwwd0g==",
   "success": true,
   "projectFilePath": "C:\\dev\\Feiragro\\Feiragro\\FeiragroWeb\\FeiragroWeb.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\profe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\profe\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
