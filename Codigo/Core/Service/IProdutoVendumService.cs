@@ -2,12 +2,12 @@
 {
     public interface IProdutoVendumService
     {
-        public int Get(Produtovendum produto);
-        public int Create(Produtovendum produto);
-        public int Edit(Produtovendum produto);
-        public bool Delete(Produtovendum produto);
+        public int Get(Produtovendum produtoVendum);
+        public int Create(Produtovendum produtoVendum);
+        public int Edit(Produtovendum produtoVendum);
+        public bool Delete(Produtovendum produtoVendum);
 
         IEnumerable<Produtovendum> GetAll();
-        IEnumerable<Produtovendum> GetByNome(string nome);
+        IEnumerable<Produtovendum> GetByIdFeira(int id);
     }
 }

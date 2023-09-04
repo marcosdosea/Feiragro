@@ -15,32 +15,41 @@ namespace Service
 
         public int Create(Reservaprodutofeira reservaprodutofeira)
         {
-            throw new NotImplementedException();
+            context.Add(reservaprodutofeira);
+            context.SaveChanges();
+            return reservaprodutofeira.IdFeira;
         }
 
         public bool Delete(Reservaprodutofeira reservaprodutofeira)
         {
-            throw new NotImplementedException();
+            context.Remove(reservaprodutofeira);
+            context.SaveChanges();
+            return true;
         }
 
         public int Edit(Reservaprodutofeira reservaprodutofeira)
         {
-            throw new NotImplementedException();
+            context.Update(reservaprodutofeira);
+            context.SaveChanges();
+            return reservaprodutofeira.IdFeira;
         }
 
         public int Get(Reservaprodutofeira reservaprodutofeira)
         {
-            throw new NotImplementedException();
+            return context.Reservaprodutofeiras.Find(reservaprodutofeira.IdFeira);
         }
 
         public IEnumerable<Reservaprodutofeira> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Reservaprodutofeiras.AsNoTracking();
         }
 
-        public IEnumerable<Reservaprodutofeira> GetByNome(string nome)
+        public IEnumerable<Reservaprodutofeira> GetByIdFeira(int idFeira)
         {
-            throw new NotImplementedException();
+            var query = from reservaProdutoFeira in context.Reservaprodutofeiras
+                        where reservaProdutoFeira.IdFeira == idFeira
+                        select reservaProdutoFeira;
+            return query;
         }
     }
 }

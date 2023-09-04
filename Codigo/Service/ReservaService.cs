@@ -15,27 +15,41 @@ namespace Service
 
         public int Create(Reserva reserva)
         {
-            throw new NotImplementedException();
+            context.Add(reserva);
+            context.SaveChanges();
+            return reserva.Id;
         }
 
         public int Edit(Reserva reserva)
         {
-            throw new NotImplementedException();
+            context.Update(reserva);
+            context.SaveChanges();
+            return reserva.Id;
+        }
+
+        public bool Delete(Reserva reserva)
+        {
+            context.Update(reserva);
+            context.SaveChanges();
+            return true;
         }
 
         public int Get(Reserva reserva)
         {
-            throw new NotImplementedException();
+            return context.Reservas.Find(reserva.Id);
         }
 
         public IEnumerable<Reserva> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Reservas.AsNoTracking();
         }
 
-        public IEnumerable<Reserva> GetByIdFeira(int id)
+        public IEnumerable<Reserva> GetByIdPessoa(int idPessoa)
         {
-            throw new NotImplementedException();
+            var query = from reserva in context.Reservas
+                        where reserva.IdPessoa == idPessoa
+                        select reserva;
+            return query;
         }
     }
 }

@@ -8,6 +8,6 @@
         public bool Delete(Produtofeira produtofeira);
 
         IEnumerable<Produtofeira> GetAll();
-        IEnumerable<Produtofeira> GetByNome(string nome);
+        IEnumerable<Produtofeira> GetByNome(int id);
     }
 }

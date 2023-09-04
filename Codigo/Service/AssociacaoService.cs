@@ -35,7 +35,7 @@ namespace Service
             return associacao.Id;
         }
 
-        public int? Get(Associacao associacao)
+        public int Get(Associacao associacao)
         {
             return context.Associacaos.Find(associacao.Id);
         }

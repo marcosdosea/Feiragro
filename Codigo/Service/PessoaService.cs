@@ -15,32 +15,42 @@ namespace Service
 
         public int Create(Pessoa pessoa)
         {
-            throw new NotImplementedException();
+            context.Add(pessoa);
+            context.SaveChanges();
+            return pessoa.Id;
         }
 
         public bool Delete(Pessoa pessoa)
         {
-            throw new NotImplementedException();
+            context.Remove(pessoa);
+            context.SaveChanges();
+            return true;
         }
 
         public int Edit(Pessoa pessoa)
         {
-            throw new NotImplementedException();
+            context.Update(pessoa);
+            context.SaveChanges();
+            return pessoa.Id;
         }
 
         public int Get(Pessoa pessoa)
         {
-            throw new NotImplementedException();
+            return context.Pessoas.Find(pessoa.Id);
         }
 
         public IEnumerable<Pessoa> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Pessoas.AsNoTracking();
         }
 
         public IEnumerable<Pessoa> GetByNome(string nome)
         {
-            throw new NotImplementedException();
+            var query = from pessoa in context.Pessoas
+                        where pessoa.Nome.StartsWith(nome)
+                        orderby pessoa.Nome
+                        select pessoa;
+            return query;
         }
     }
 }

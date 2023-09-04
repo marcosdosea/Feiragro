@@ -8,6 +8,6 @@
         public bool Delete(Reservaprodutofeira reservaprodutofeira);
 
         IEnumerable<Reservaprodutofeira> GetAll();
-        IEnumerable<Reservaprodutofeira> GetByNome(string nome);
+        IEnumerable<Reservaprodutofeira> GetByIdFeira(int idFeira);
     }
 }

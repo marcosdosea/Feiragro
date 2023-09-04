@@ -13,34 +13,43 @@ namespace Service
             this.context = context;
         }
 
-        public int Create(Pontoassociacao pontoVenda)
+        public int Create(Pontoassociacao pontoAssociacao)
         {
-            throw new NotImplementedException();
+            context.Add(pontoAssociacao);
+            context.SaveChanges();
+            return pontoAssociacao.Id;
         }
 
-        public bool Delete(Pontoassociacao pontoVenda)
+        public bool Delete(Pontoassociacao pontoAssociacao)
         {
-            throw new NotImplementedException();
+            context.Remove(pontoAssociacao);
+            context.SaveChanges();
+            return true;
         }
 
-        public int Edit(Pontoassociacao pontoVenda)
+        public int Edit(Pontoassociacao pontoAssociacao)
         {
-            throw new NotImplementedException();
+            context.Update(pontoAssociacao);
+            context.SaveChanges();
+            return pontoAssociacao.Id;
         }
 
-        public int Get(Pontoassociacao pontoVenda)
+        public int Get(Pontoassociacao pontoAssociacao)
         {
-            throw new NotImplementedException();
+            return context.Pontoassociacaos.Find(pontoAssociacao.Id);
         }
 
         public IEnumerable<Pontoassociacao> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Pontoassociacaos.AsNoTracking();
         }
 
         public IEnumerable<Pontoassociacao> GetByIdAssociacao(int id)
         {
-            throw new NotImplementedException();
+            var query = from pontoAssociacao in context.Pontoassociacaos
+                        where pontoAssociacao.IdAssociacao == id
+                        select pontoAssociacao;
+            return query;
         }
     }
 }

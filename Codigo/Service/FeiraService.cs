@@ -34,7 +34,7 @@ namespace Service
 
         public int Get(Feira feira)
         {
-            return context.Associacaos.Find(feira.Id);
+            return context.Feiras.Find(feira.Id);
         }
 
         public IEnumerable<Feira> GetAll()

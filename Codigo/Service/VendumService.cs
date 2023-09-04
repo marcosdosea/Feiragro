@@ -13,34 +13,43 @@ namespace Service
             this.context = context;
         }
 
-        public int Create(Vendum vendum)
+        public int Create(Vendum venda)
         {
-            throw new NotImplementedException();
+            context.Add(venda);
+            context.SaveChanges();
+            return venda.Id;
         }
 
-        public bool Delete(Vendum vendum)
+        public bool Delete(Vendum venda)
         {
-            throw new NotImplementedException();
+            context.Remove(venda);
+            context.SaveChanges();
+            return true;
         }
 
-        public int Edit(Vendum vendum)
+        public int Edit(Vendum venda)
         {
-            throw new NotImplementedException();
+            context.Update(venda);
+            context.SaveChanges();
+            return venda.Id;
         }
 
-        public int Get(Vendum vendum)
+        public int Get(Vendum venda)
         {
-            throw new NotImplementedException();
+            return context.Venda.Find(venda.Id);
         }
 
         public IEnumerable<Vendum> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Venda.AsNoTracking();
         }
 
-        public IEnumerable<Vendum> GetByNome(string nome)
+        public IEnumerable<Vendum> GetByIdPessoa(int id)
         {
-            throw new NotImplementedException();
+            var query = from venda in context.Venda
+                        where venda.IdCliente == id
+                        select venda;
+            return query;
         }
     }
 }
