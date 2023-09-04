@@ -8,6 +8,6 @@
         public bool Delete(Produto produto);
 
         IEnumerable<Produto> GetAll();
-        IEnumerable<Produto> GetByNome(int id);
+        IEnumerable<Produto> GetByNome(string nome);
     }
 }
