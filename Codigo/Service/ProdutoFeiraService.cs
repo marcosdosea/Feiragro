@@ -5,6 +5,14 @@ namespace Service
 {
     public class ProdutoFeiraService : IProdutoFeiraService
     {
+        private readonly FeiragroContext context;
+
+
+        public ProdutoFeiraService(FeiragroContext context)
+        {
+            this.context = context;
+        }
+
         public int Create(Produtofeira produtofeira)
         {
             throw new NotImplementedException();

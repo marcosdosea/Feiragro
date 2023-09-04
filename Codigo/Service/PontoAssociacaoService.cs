@@ -5,6 +5,14 @@ namespace Service
 {
     public class PontoAssociacaoService : IPontoAssociacaoService
     {
+        private readonly FeiragroContext context;
+
+
+        public PontoAssociacaoService(FeiragroContext context)
+        {
+            this.context = context;
+        }
+
         public int Create(Pontoassociacao pontoVenda)
         {
             throw new NotImplementedException();

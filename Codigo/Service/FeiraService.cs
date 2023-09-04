@@ -1,33 +1,54 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class FeiraService : IFeiraService
     {
+        private readonly FeiragroContext context;
+
+
+        public FeiraService(FeiragroContext context)
+        {
+            this.context = context;
+        }
         public int Create(Feira feira)
         {
-            throw new NotImplementedException();
+            context.Add(feira);
+            context.SaveChanges();
+            return feira.Id;
         }
-
+        public bool Delete(Feira feira)
+        {
+            context.Remove(feira);
+            context.SaveChanges();
+            return true;
+        }
         public int Edit(Feira feira)
         {
-            throw new NotImplementedException();
+            context.Update(feira);
+            context.SaveChanges();
+            return feira.Id;
         }
 
         public int Get(Feira feira)
         {
-            throw new NotImplementedException();
+            return context.Associacaos.Find(feira.Id);
         }
 
         public IEnumerable<Feira> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Feiras.AsNoTracking();
         }
 
         public IEnumerable<Feira> GetByIdAssociacao(int id)
         {
-            throw new NotImplementedException();
+            var query = from feira in context.Feiras
+                        where feira.IdAssociacao == id
+                        orderby feira.Id
+                        select feira;
+            return query;
         }
     }
 }

@@ -5,6 +5,14 @@ namespace Service
 {
     public class VendumService : IVendumService
     {
+        private readonly FeiragroContext context;
+
+
+        public VendumService(FeiragroContext context)
+        {
+            this.context = context;
+        }
+
         public int Create(Vendum vendum)
         {
             throw new NotImplementedException();
