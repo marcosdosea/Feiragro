@@ -34,9 +34,9 @@ namespace Service
             return produto.Id;
         }
 
-        public int Get(Produto produto)
+        public int Get(int produto)
         {
-            return context.Produtos.Find(produto.Id);
+            return context.Produtos.Find(produto);
         }
 
         public IEnumerable<Produto> GetAll()
