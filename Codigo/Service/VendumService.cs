@@ -44,10 +44,11 @@ namespace Service
             return context.Venda.AsNoTracking();
         }
 
-        public IEnumerable<Vendum> GetByIdPessoa(int id)
+        public IEnumerable<Vendum> GetByIdCliente(int idCliente)
         {
             var query = from venda in context.Venda
-                        where venda.IdCliente == id
+                        where venda.IdCliente == idCliente
+                        orderby venda.IdCliente
                         select venda;
             return query;
         }

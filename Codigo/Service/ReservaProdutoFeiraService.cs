@@ -48,6 +48,7 @@ namespace Service
         {
             var query = from reservaProdutoFeira in context.Reservaprodutofeiras
                         where reservaProdutoFeira.IdFeira == idFeira
+                        orderby reservaProdutoFeira.IdFeira
                         select reservaProdutoFeira;
             return query;
         }

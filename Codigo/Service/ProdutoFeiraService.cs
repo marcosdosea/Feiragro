@@ -44,10 +44,11 @@ namespace Service
             return context.Produtofeiras.AsNoTracking();
         }
 
-        public IEnumerable<Produtofeira> GetByNome(int id)
+        public IEnumerable<Produtofeira> GetByIdFeira(int idFeira)
         {
             var query = from produtoFeira in context.Produtofeiras
-                        where produtoFeira.IdFeira == id
+                        where produtoFeira.IdFeira == idFeira
+                        orderby produtoFeira.IdFeira
                         select produtoFeira;
             return query;
         }

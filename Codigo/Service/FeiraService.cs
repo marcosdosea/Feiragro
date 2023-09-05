@@ -42,10 +42,10 @@ namespace Service
             return context.Feiras.AsNoTracking();
         }
 
-        public IEnumerable<Feira> GetByIdAssociacao(int id)
+        public IEnumerable<Feira> GetByIdAssociacao(int idAssociacao)
         {
             var query = from feira in context.Feiras
-                        where feira.IdAssociacao == id
+                        where feira.IdAssociacao == idAssociacao
                         orderby feira.Id
                         select feira;
             return query;

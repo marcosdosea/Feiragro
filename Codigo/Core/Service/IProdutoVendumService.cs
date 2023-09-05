@@ -2,10 +2,10 @@
 {
     public interface IProdutoVendumService
     {
-        public int Get(Produtovendum produtoVendum);
-        public int Create(Produtovendum produtoVendum);
-        public int Edit(Produtovendum produtoVendum);
-        public bool Delete(Produtovendum produtoVendum);
+        public int Get(Produtovendum produtoVenda);
+        public int Create(Produtovendum produtoVenda);
+        public int Edit(Produtovendum produtoVenda);
+        public bool Delete(Produtovendum produtoVenda);
 
         IEnumerable<Produtovendum> GetAll();
         IEnumerable<Produtovendum> GetByIdFeira(int id);

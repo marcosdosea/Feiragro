@@ -44,10 +44,11 @@ namespace Service
             return context.Pontoassociacaos.AsNoTracking();
         }
 
-        public IEnumerable<Pontoassociacao> GetByIdAssociacao(int id)
+        public IEnumerable<Pontoassociacao> GetByIdAssociacao(int idAssociacao)
         {
             var query = from pontoAssociacao in context.Pontoassociacaos
-                        where pontoAssociacao.IdAssociacao == id
+                        where pontoAssociacao.IdAssociacao == idAssociacao
+                        orderby pontoAssociacao.IdAssociacao
                         select pontoAssociacao;
             return query;
         }
