@@ -1,3 +1,8 @@
+using Core;
+using Core.Service;
+using Microsoft.EntityFrameworkCore;
+using Service;
+
 namespace FeiragroWeb
 {
     public class Program
@@ -5,9 +10,13 @@ namespace FeiragroWeb
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddTransient<ITipoProdutoService, TipoProdutoService>();
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.Services.AddDbContext<FeiragroContext>(
+                options => options.UseMySQL(builder.Configuration.GetConnectionString("FeiragroDatabase")!));
 
             var app = builder.Build();
 
