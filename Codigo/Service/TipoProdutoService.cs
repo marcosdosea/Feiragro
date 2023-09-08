@@ -19,8 +19,9 @@ namespace Service
             return tipoProduto.Id;
         }
 
-        public void Delete(Tipoproduto tipoProduto)
+        public void Delete(int idTipoProduto)
         {
+            var tipoProduto = context.Tipoprodutos.Find(idTipoProduto);
             context.Remove(tipoProduto);
             context.SaveChanges();
           
