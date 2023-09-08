@@ -12,36 +12,44 @@ namespace Service
         }
 
 
-        public bool Create(Tipoproduto tipoProduto)
+        public int Create(Tipoproduto tipoProduto)
         {
-            context.Add(tipoproduto);
+            context.Add(tipoProduto);
             context.SaveChanges();
-            return true;
+            return tipoProduto.Id;
         }
 
-        public bool Delete(Tipoproduto tipoProduto)
+        public void Delete(Tipoproduto tipoProduto)
         {
-            throw new NotImplementedException();
+            context.Remove(tipoProduto);
+            context.SaveChanges();
+          
         }
 
-        public Tipoproduto? Edit(Tipoproduto tipoProduto)
+        public void Edit(Tipoproduto tipoProduto)
         {
-            throw new NotImplementedException();
+            context.Update(tipoProduto);
+            context.SaveChanges();
         }
 
         public Tipoproduto Get(int tipoProduto)
         {
-            throw new NotImplementedException();
+           return context.Tipoprodutos.Find(tipoProduto);
+           
         }
 
         public IEnumerable<Tipoproduto> GetAll()
         {
-            throw new NotImplementedException();
+           return context.Tipoprodutos.AsNoTracking();
         }
 
         public IEnumerable<Tipoproduto> GetByNome(string nome)
         {
-            throw new NotImplementedException();
+            var query = from tipoProduto in context.Tipoprodutos
+                        where tipoProduto.Nome.StartsWith(nome)
+                        orderby tipoProduto.Nome
+                        select tipoProduto;
+            return query;
         }
     }
 }
