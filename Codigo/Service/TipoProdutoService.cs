@@ -5,9 +5,18 @@ namespace Service
 {
     public class TipoProdutoService : ITipoProdutoService
     {
-        public int Create(Tipoproduto tipoProduto)
+        private readonly FeiragroContext context;
+        public TipoProdutoService (FeiragroContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+        }
+
+
+        public bool Create(Tipoproduto tipoProduto)
+        {
+            context.Add(tipoproduto);
+            context.SaveChanges();
+            return true;
         }
 
         public bool Delete(Tipoproduto tipoProduto)
@@ -15,12 +24,12 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        public int Edit(Tipoproduto tipoProduto)
+        public Tipoproduto? Edit(Tipoproduto tipoProduto)
         {
             throw new NotImplementedException();
         }
 
-        public int Get(Tipoproduto tipoProduto)
+        public Tipoproduto Get(int tipoProduto)
         {
             throw new NotImplementedException();
         }

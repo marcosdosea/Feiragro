@@ -2,9 +2,9 @@
 {
     public interface ITipoProdutoService
     {
-        public int Get(Tipoproduto tipoProduto);
-        public int Create(Tipoproduto tipoProduto);
-        public int Edit(Tipoproduto tipoProduto);
+        public Tipoproduto Get(int tipoProduto);
+        public bool Create(Tipoproduto tipoProduto);
+        public Tipoproduto? Edit(Tipoproduto tipoProduto);
         public bool Delete(Tipoproduto tipoProduto);
 
         IEnumerable<Tipoproduto> GetAll();
