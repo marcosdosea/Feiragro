@@ -1,38 +1,53 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class ProdutoService : IProdutoService
     {
+        private readonly FeiragroContext context;
+        public ProdutoService(FeiragroContext context)
+        {
+            this.context = context;
+        }
         public int Create(Produto produto)
         {
-            throw new NotImplementedException();
+            context.Add(produto);
+            context.SaveChanges();
+            return produto.Id;
         }
 
-        public bool Delete(Produto produto)
+        public void Delete(int idProduto)
         {
-            throw new NotImplementedException();
+            var produto = context.Produtos.Find(idProduto);
+            context.Remove(produto);
+            context.SaveChanges();
         }
 
-        public int Edit(Produto produto)
+        public void Edit(Produto produto)
         {
-            throw new NotImplementedException();
+            context.Update(produto);
+            context.SaveChanges();
         }
 
-        public int Get(Produto produto)
+        public Produto Get(int idProduto)
         {
-            throw new NotImplementedException();
+            return context.Produtos.Find(idProduto)!;
         }
 
         public IEnumerable<Produto> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Produtos.AsNoTracking();
         }
 
         public IEnumerable<Produto> GetByNome(string nome)
         {
-            throw new NotImplementedException();
+            var query = from produto in context.Produtos
+                        where produto.Nome.StartsWith(nome)
+                        orderby produto.Nome
+                        select produto;
+            return query;
         }
     }
 }

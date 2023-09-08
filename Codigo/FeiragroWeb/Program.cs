@@ -12,6 +12,7 @@ namespace FeiragroWeb
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ITipoProdutoService, TipoProdutoService>();
+            builder.Services.AddTransient<IProdutoService, ProdutoService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
