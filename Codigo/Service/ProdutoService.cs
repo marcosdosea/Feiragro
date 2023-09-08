@@ -33,7 +33,7 @@ namespace Service
 
         public Produto Get(int idProduto)
         {
-            return context.Produtos.Find(idProduto);
+            return context.Produtos.Find(idProduto)!;
         }
 
         public IEnumerable<Produto> GetAll()
