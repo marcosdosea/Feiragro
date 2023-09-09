@@ -1,33 +1,74 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class FeiraService : IFeiraService
     {
+        public readonly FeiragroContext _context;
+
+        public FeiraService(FeiragroContext context)
+        {  
+            _context = context;
+        }
+        /// <summary>
+        /// Funcao para criar um FeiraService
+        /// </summary>
+        /// <param name="feira"></param>
+        /// <returns>id da feira</returns>
         public int Create(Feira feira)
         {
-            throw new NotImplementedException();
+            _context.Add(feira);
+            _context.SaveChanges();
+            return feira.Id;
         }
-
-        public int Edit(Feira feira)
+        /// <summary>
+        /// Funcao para Deletar uma feira
+        /// </summary>
+        /// <param name="idFeira"></param>
+        /// <returns></returns>
+        public void Delete(int idFeira)
         {
-            throw new NotImplementedException();
+            var feira = _context.Feiras.Find(idFeira);
+            _context.Remove(feira);
+            _context.SaveChanges();
         }
-
-        public int Get(Feira feira)
+        /// <summary>
+        /// Funcao para Editar uma feira
+        /// </summary>
+        /// <param name="feira"></param>
+        /// <returns></returns>
+        public void Edit(Feira feira)
         {
-            throw new NotImplementedException();
+            _context.Update(feira);
+            _context.SaveChanges();
         }
-
+        /// <summary>
+        /// Funcao para Pesquisar uma feira por id
+        /// </summary>
+        /// <param name="idFeira"></param>
+        /// <returns>A feira</returns>
+        public Feira Get(int idFeira)
+        {
+            return _context.Feiras.Find(idFeira)!;
+        }
+        /// <summary>
+        /// Funcao para Pesquisar todas as feiras
+        /// </summary>
+        /// <returns>Lista com todas as feiras</returns>
         public IEnumerable<Feira> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Feiras.AsNoTracking();
         }
 
-        public IEnumerable<Feira> GetByIdAssociacao(int id)
+        public IEnumerable<Feira> GetByIdAssociacao(int idAssociacao)
         {
-            throw new NotImplementedException();
+            var query = from feira in _context.Feiras
+                        where feira.IdAssociacao == idAssociacao
+                        select feira;
+            return query;
         }
+
     }
 }
