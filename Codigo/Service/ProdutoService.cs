@@ -21,7 +21,7 @@ namespace Service
         public void Delete(int idProduto)
         {
             var produto = context.Produtos.Find(idProduto);
-            context.Remove(produto);
+            context.Remove(produto!);
             context.SaveChanges();
         }
 
