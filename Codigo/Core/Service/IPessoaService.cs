@@ -2,10 +2,10 @@
 {
     public interface IPessoaService
     {
-        public int Get(Pessoa pessoa);
+        public Pessoa Get(int idPessoa);
         public int Create(Pessoa pessoa);
-        public int Edit(Pessoa pessoa);
-        public bool Delete(Pessoa pessoa);
+        public void Edit(Pessoa pessoa);
+        public void Delete(int idPessoa);
 
         IEnumerable<Pessoa> GetAll();
         IEnumerable<Pessoa> GetByNome(string nome);

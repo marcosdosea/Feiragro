@@ -2,7 +2,7 @@
 {
     public interface ITipoProdutoService
     {
-        public Tipoproduto Get(int tipoProduto);
+        public Tipoproduto Get(int idTipoProduto);
         public int Create(Tipoproduto tipoProduto);
         public void Edit(Tipoproduto tipoProduto);
         public void Delete(int idTipoProduto);
