@@ -1,38 +1,54 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class PontoAssociacaoService : IPontoAssociacaoService
     {
+        private readonly FeiragroContext _context;
+        public PontoAssociacaoService(FeiragroContext context)
+        {
+            _context = context;
+        }
+    
+
         public int Create(Pontoassociacao pontoVenda)
         {
-            throw new NotImplementedException();
+            _context.Add(pontoVenda);
+            _context.SaveChanges();
+            return pontoVenda.Id;
         }
 
-        public bool Delete(Pontoassociacao pontoVenda)
+        public void Delete(int idPontoVenda)
         {
-            throw new NotImplementedException();
+            var pontoVenda = _context.Pontoassociacaos.Find(idPontoVenda);
+            _context.Remove(pontoVenda!);
+            _context.SaveChanges();
         }
 
-        public int Edit(Pontoassociacao pontoVenda)
+        public void Edit(Pontoassociacao pontoVenda)
         {
-            throw new NotImplementedException();
+            _context.Update(pontoVenda);
+            _context.SaveChanges();
         }
 
-        public int Get(Pontoassociacao pontoVenda)
+        public Pontoassociacao Get(int idPontoVenda)
         {
-            throw new NotImplementedException();
+            return _context.Pontoassociacaos.Find(idPontoVenda)!;
         }
 
         public IEnumerable<Pontoassociacao> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Pontoassociacaos.AsNoTracking();
         }
 
         public IEnumerable<Pontoassociacao> GetByIdAssociacao(int id)
         {
-            throw new NotImplementedException();
+            var query = from pontoVenda in _context.Pontoassociacaos
+                        where pontoVenda.IdAssociacao == id
+                        select pontoVenda;
+            return query.AsNoTracking();
         }
     }
 }
