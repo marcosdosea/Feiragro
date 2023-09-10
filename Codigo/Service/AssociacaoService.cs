@@ -1,38 +1,48 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class AssociacaoService : IAssociacaoService
     {
+        private readonly FeiragroContext context;
+        public AssociacaoService(FeiragroContext context)
+        {
+            this.context = context;
+        }
+        public Associacao Get(int idAssociacao)
+        {
+            return context.Associacaos.Find(idAssociacao)!;
+        }
         public int Create(Associacao associacao)
         {
-            throw new NotImplementedException();
+            context.Add(associacao);
+            context.SaveChanges();
+            return associacao.Id;
         }
-
-        public bool Delete(Associacao associacao)
+        public void Edit(Associacao associacao)
         {
-            throw new NotImplementedException();
+            context.Update(associacao);
+            context.SaveChanges();
         }
-
-        public int Edit(Associacao associacao)
+        public void Delete(int idAssociacao)
         {
-            throw new NotImplementedException();
+            var associacao = context.Associacaos.Find(idAssociacao);
+            context.Remove(associacao!);
+            context.SaveChanges();
         }
-
-        public int Get(Associacao associacao)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Associacao> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Associacaos.AsNoTracking();
         }
-
-        public IEnumerable<Associacao> GetByIdAssociacao(int id)
+        public IEnumerable<Associacao> GetByNome(string nome)
         {
-            throw new NotImplementedException();
+            var query = from associacao in context.Associacaos
+                        where associacao.Nome.StartsWith(nome)
+                        orderby associacao.Nome
+                        select associacao;
+            return query;
         }
     }
 }

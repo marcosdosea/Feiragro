@@ -4,7 +4,6 @@ using Core.Service;
 using FeiragroWeb.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Service;
 
 namespace FeiragroWeb.Controllers
 {
@@ -55,7 +54,6 @@ namespace FeiragroWeb.Controllers
                 pessoaService.Create(tipoProduto);
             }
             return RedirectToAction(nameof(Index));
-
         }
 
         // GET: PessoaController/Edit/5

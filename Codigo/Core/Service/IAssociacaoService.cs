@@ -2,13 +2,12 @@
 {
     public interface IAssociacaoService
     {
-        public int Get(Associacao associacao);
+        public Associacao Get(int idAssociacao);
         public int Create(Associacao associacao);
-        public int Edit(Associacao associacao);
-        public bool Delete(Associacao associacao);
-
+        public void Edit(Associacao associacao);
+        public void Delete(int idAssociacao);
         IEnumerable<Associacao> GetAll();
-        IEnumerable<Associacao> GetByIdAssociacao(int id);
+        IEnumerable<Associacao> GetByNome(string nome);
 
     }
 }
