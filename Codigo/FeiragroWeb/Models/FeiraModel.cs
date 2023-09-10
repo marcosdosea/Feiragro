@@ -22,12 +22,11 @@ namespace FeiragroWeb.Models
         public DateTime DataInicio { get; set; }
 
         [Display(Name = "Data de Fim")]
-        [Required(ErrorMessage = "A data de fim é obrigatória")]
         public DateTime? DataFim { get; set; }
 
         [Display(Name = "Status atual da feira")]
         [Required(ErrorMessage = "O status é obrigatório")]
-        public string Status { get; set; } = null!;
+        public string Status { get; set; } = "ABERTO";
 
         [Display(Name = "Associação em que a feira está atribuida")]
         [Required(ErrorMessage = "A feira precisa estar atribuida a uma associação")]
