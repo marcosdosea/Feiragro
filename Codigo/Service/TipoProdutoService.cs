@@ -12,7 +12,7 @@ namespace Service
             this.context = context;
         }
         /// <summary>
-        /// Funcao para criar um tipoProdutoService
+        /// Funcao para criar um tipoProduto
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
@@ -23,19 +23,19 @@ namespace Service
             return tipoProduto.Id;
         }
         /// <summary>
-        /// Funcao para Deleta um tipoProdutoService
+        /// Funcao para Deletar um tipoProduto
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
         public void Delete(int idTipoProduto)
         {
             var tipoProduto = context.Tipoprodutos.Find(idTipoProduto);
-            context.Remove(tipoProduto);
+            context.Remove(tipoProduto!);
             context.SaveChanges();
           
         }
         /// <summary>
-        /// Funcao para Editar um tipoProdutoService
+        /// Funcao para Editar um tipoProduto
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
@@ -45,17 +45,17 @@ namespace Service
             context.SaveChanges();
         }
         /// <summary>
-        /// Funcao para procurar um tipoProdutoService
+        /// Funcao para procurar um tipoProduto
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
-        public Tipoproduto Get(int tipoProduto)
+        public Tipoproduto Get(int idTipoProduto)
         {
-           return context.Tipoprodutos.Find(tipoProduto);
+           return context.Tipoprodutos.Find(idTipoProduto)!;
            
         }
         /// <summary>
-        /// Funcao para retornar todos os tipoProdutoService
+        /// Funcao para retornar todos os tipoProduto
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace Service
            return context.Tipoprodutos.AsNoTracking();
         }
         /// <summary>
-        /// Funcao para consultar os tipoProdutoService pelo nome
+        /// Funcao para consultar os tipoProdutos pelo nome
         /// </summary>
         /// <param name="tipoProduto"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace Service
                         where tipoProduto.Nome.StartsWith(nome)
                         orderby tipoProduto.Nome
                         select tipoProduto;
-            return query;
+            return query.AsNoTracking();
         }
     }
 }
