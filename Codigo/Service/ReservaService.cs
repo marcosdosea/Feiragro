@@ -1,33 +1,50 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
     public class ReservaService : IReservaService
     {
+        private readonly FeiragroContext context;
+
+        public ReservaService(FeiragroContext context)
+        {
+            this.context = context;
+        }
+        /// <summary>
+        /// Funcao para criar uma ReservaService
+        /// </summary>
+        /// <param name="reserva"></param>
+        /// <returns>id da reserva</returns>
         public int Create(Reserva reserva)
         {
-            throw new NotImplementedException();
+            context.Add(reserva);
+            context.SaveChanges();
+            return reserva.Id;
         }
 
-        public int Edit(Reserva reserva)
+        public void Edit(Reserva reserva)
         {
-            throw new NotImplementedException();
+            context.Update(reserva);
+            context.SaveChanges();
         }
 
-        public int Get(Reserva reserva)
+        public void Delete(int reserva)
         {
-            throw new NotImplementedException();
+            var associacao = context.Associacaos.Find(reserva);
+            context.Remove(reserva!);
+            context.SaveChanges();
+        }
+
+        public Reserva Get(Reserva idReserva)
+        {
+            return context.Reservas.Find(idReserva)!;
         }
 
         public IEnumerable<Reserva> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Reserva> GetByIdFeira(int id)
-        {
-            throw new NotImplementedException();
+            return context.Reservas.AsNoTracking();
         }
     }
 }

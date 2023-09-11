@@ -2,10 +2,9 @@
 {
     public interface IReservaService
     {
-        public int Get(Reserva reserva);
+        public Reserva Get(Reserva reserva);
         public int Create(Reserva reserva);
-        public int Edit(Reserva reserva);
+        public void Edit(Reserva reserva);
         IEnumerable<Reserva> GetAll();
-        IEnumerable<Reserva> GetByIdFeira(int id);
     }
 }
