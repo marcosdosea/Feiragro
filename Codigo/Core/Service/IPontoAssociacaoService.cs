@@ -2,10 +2,10 @@
 {
     public interface IPontoAssociacaoService
     {
-        public int Get(Pontoassociacao pontoVenda);
+        public Pontoassociacao Get(int id);
         public int Create(Pontoassociacao pontoVenda);
-        public int Edit(Pontoassociacao pontoVenda);
-        public bool Delete(Pontoassociacao pontoVenda);
+        public void Edit(Pontoassociacao pontoVenda);
+        public void Delete(int id);
 
         IEnumerable<Pontoassociacao> GetAll();
         IEnumerable<Pontoassociacao> GetByIdAssociacao(int id);
