@@ -14,6 +14,8 @@ namespace FeiragroWeb
             builder.Services.AddTransient<ITipoProdutoService, TipoProdutoService>();
             builder.Services.AddTransient<IProdutoService, ProdutoService>();
             builder.Services.AddTransient<IPontoAssociacaoService, PontoAssociacaoService>();
+            builder.Services.AddTransient<IFeiraService, FeiraService>();
+          
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddDbContext<FeiragroContext>(

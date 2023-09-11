@@ -2,9 +2,10 @@
 {
     public interface IFeiraService
     {
-        public int Get(Feira feira);
+        public Feira Get(int idFeira);
         public int Create(Feira feira);
-        public int Edit(Feira feira);
+        public void Edit(Feira feira);
+        public void Delete(int idFeira);
         IEnumerable<Feira> GetAll();
         IEnumerable<Feira> GetByIdAssociacao(int id);
     }
