@@ -81,9 +81,6 @@ namespace Service
                         orderby pessoa.Nome
                         select pessoa;
             return query.AsNoTracking();
-
-
-
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Service
         /// Funcao para Editar uma feira
         /// </summary>
         /// <param name="feira"></param>
-        /// <returns></returns>
+        /// <returns>A Feira</returns>
         public void Edit(Feira feira)
         {
             _context.Update(feira);
