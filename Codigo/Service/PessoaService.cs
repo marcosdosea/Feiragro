@@ -73,7 +73,6 @@ namespace Service
         /// </summary>
         /// <param name="pessoa"></param>
         /// <returns></returns>
-
         public IEnumerable<Pessoa> GetByNome(string nome)
         {
             var query = from pessoa in context.Pessoas
@@ -81,9 +80,6 @@ namespace Service
                         orderby pessoa.Nome
                         select pessoa;
             return query.AsNoTracking();
-
-
-
         }
     }
 }
