@@ -66,6 +66,11 @@ namespace Service
             return context.Produtos.AsNoTracking();
         }
 
+        /// <summary>
+        /// Funcao para consultar os Produtos pelo nome
+        /// </summary>
+        /// <param name="protudo"></param>
+        /// <returns></returns>
         public IEnumerable<Produto> GetByNome(string nome)
         {
             var query = from produto in context.Produtos

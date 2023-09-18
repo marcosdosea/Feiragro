@@ -53,6 +53,7 @@ namespace Service
         {
             return _context.Feiras.Find(idFeira)!;
         }
+
         /// <summary>
         /// Funcao para Pesquisar todas as feiras
         /// </summary>
@@ -62,6 +63,11 @@ namespace Service
             return _context.Feiras.AsNoTracking();
         }
 
+        /// <summary>
+        /// Funcao para consultar as Feiras na Associacao pelo nome
+        /// </summary>
+        /// <param name="feira"></param>
+        /// <returns></returns>
         public IEnumerable<Feira> GetByIdAssociacao(int idAssociacao)
         {
             var query = from feira in _context.Feiras

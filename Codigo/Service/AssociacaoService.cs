@@ -65,6 +65,12 @@ namespace Service
         {
             return context.Associacaos.AsNoTracking();
         }
+
+        /// <summary>
+        /// Funcao para consultar as Associacoes pelo nome
+        /// </summary>
+        /// <param name="associacao"></param>
+        /// <returns></returns>
         public IEnumerable<Associacao> GetByNome(string nome)
         {
             var query = from associacao in context.Associacaos

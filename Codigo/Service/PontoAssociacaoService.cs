@@ -66,6 +66,11 @@ namespace Service
             return _context.Pontoassociacaos.AsNoTracking();
         }
 
+        /// <summary>
+        /// Funcao para consultar os Produtos pelo nome
+        /// </summary>
+        /// <param name="prontoAssiacao"></param>
+        /// <returns></returns>
         public IEnumerable<Pontoassociacao> GetByIdAssociacao(int id)
         {
             var query = from pontoVenda in _context.Pontoassociacaos

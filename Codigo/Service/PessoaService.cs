@@ -73,7 +73,6 @@ namespace Service
         /// </summary>
         /// <param name="pessoa"></param>
         /// <returns></returns>
-
         public IEnumerable<Pessoa> GetByNome(string nome)
         {
             var query = from pessoa in context.Pessoas
