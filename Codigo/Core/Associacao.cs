@@ -1,25 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core;
+﻿namespace Core;
 
 public partial class Associacao
 {
     public int Id { get; set; }
 
-    public string Endereco { get; set; } = null!;
+    public string Nome { get; set; } = null!;
 
     public string Cnpj { get; set; } = null!;
 
-    public string Telefone { get; set; } = null!;
-
-    public DateTime Data { get; set; }
-
     public string Email { get; set; } = null!;
 
-    public string Nome { get; set; } = null!;
+    public string Cep { get; set; } = null!;
+
+    public string Uf { get; set; } = null!;
+
+    public string Municipio { get; set; } = null!;
+
+    public string Rua { get; set; } = null!;
+
+    public string Bairro { get; set; } = null!;
+
+    public string Numero { get; set; } = null!;
+
+    public string? Complemento { get; set; }
+
+    public string Telefone { get; set; } = null!;
 
     public string Status { get; set; } = null!;
+
+    public DateTime Data { get; set; }
 
     public virtual ICollection<Feira> Feiras { get; set; } = new List<Feira>();
 

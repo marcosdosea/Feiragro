@@ -2,7 +2,6 @@
 using Core;
 using Core.Service;
 using FeiragroWeb.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeiragroWeb.Controllers
@@ -47,7 +46,12 @@ namespace FeiragroWeb.Controllers
             if(ModelState.IsValid)
             {
                 var associacao = mapper.Map<Associacao>(associacaoModel);
+                Console.WriteLine("@@@@@@@@@@@@\n" + associacao.Status);
                 associacaoService.Create(associacao);
+            }
+            else
+            {
+                Console.WriteLine("Nao criou");
             }
             return RedirectToAction(nameof(Index));
         }
