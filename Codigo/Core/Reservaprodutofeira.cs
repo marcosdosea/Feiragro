@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core;
+﻿namespace Core;
 
 public partial class Reservaprodutofeira
 {
@@ -11,7 +8,7 @@ public partial class Reservaprodutofeira
 
     public int IdProduto { get; set; }
 
-    public decimal ReservaHasProdutoFeiracol { get; set; }
+    public decimal Quantidade { get; set; }
 
     public virtual Produtofeira Id { get; set; } = null!;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core;
+﻿namespace Core;
 
 public partial class Pontoassociacao
 {
@@ -11,17 +8,17 @@ public partial class Pontoassociacao
 
     public string Cep { get; set; } = null!;
 
-    public string Complemento { get; set; } = null!;
-
     public string Uf { get; set; } = null!;
 
     public string Municipio { get; set; } = null!;
 
     public string Rua { get; set; } = null!;
 
+    public string Bairro { get; set; } = null!;
+
     public int Numero { get; set; }
 
-    public string Bairro { get; set; } = null!;
+    public string? Complemento { get; set; }
 
     public virtual ICollection<Feira> Feiras { get; set; } = new List<Feira>();
 

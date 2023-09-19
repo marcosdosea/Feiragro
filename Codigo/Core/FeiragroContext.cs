@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Core;
 
@@ -37,10 +35,6 @@ public partial class FeiragroContext : DbContext
 
     public virtual DbSet<Vendum> Venda { get; set; }
 
-/*    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=Feiragro");*/
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Associacao>(entity =>
@@ -56,21 +50,38 @@ public partial class FeiragroContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+            entity.Property(e => e.Bairro)
+                .HasMaxLength(50)
+                .HasColumnName("bairro");
+            entity.Property(e => e.Cep)
+                .HasMaxLength(8)
+                .HasColumnName("cep");
             entity.Property(e => e.Cnpj)
                 .HasMaxLength(15)
                 .HasColumnName("cnpj");
+            entity.Property(e => e.Complemento)
+                .HasMaxLength(80)
+                .HasColumnName("complemento");
             entity.Property(e => e.Data)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
                 .HasColumnName("data");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .HasColumnName("email");
-            entity.Property(e => e.Endereco)
-                .HasMaxLength(50)
-                .HasColumnName("endereco");
+            entity.Property(e => e.Municipio)
+                .HasMaxLength(20)
+                .HasColumnName("municipio");
             entity.Property(e => e.Nome)
                 .HasMaxLength(50)
                 .HasColumnName("nome");
+            entity.Property(e => e.Numero)
+                .HasMaxLength(10)
+                .HasDefaultValueSql("'0'")
+                .HasColumnName("numero");
+            entity.Property(e => e.Rua)
+                .HasMaxLength(50)
+                .HasColumnName("rua");
             entity.Property(e => e.Status)
                 .HasDefaultValueSql("'ATIVO'")
                 .HasColumnType("enum('ATIVO','DESATIVO')")
@@ -78,6 +89,9 @@ public partial class FeiragroContext : DbContext
             entity.Property(e => e.Telefone)
                 .HasMaxLength(14)
                 .HasColumnName("telefone");
+            entity.Property(e => e.Uf)
+                .HasMaxLength(2)
+                .HasColumnName("uf");
         });
 
         modelBuilder.Entity<Feira>(entity =>
@@ -94,10 +108,11 @@ public partial class FeiragroContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
             entity.Property(e => e.DataFim)
-                .HasColumnType("date")
+                .HasColumnType("datetime")
                 .HasColumnName("dataFim");
             entity.Property(e => e.DataInicio)
-                .HasColumnType("date")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("datetime")
                 .HasColumnName("dataInicio");
             entity.Property(e => e.IdAssociacao).HasColumnType("int(11)");
             entity.Property(e => e.IdPontoAssociacao).HasColumnType("int(11)");
@@ -145,8 +160,8 @@ public partial class FeiragroContext : DbContext
                 .HasMaxLength(14)
                 .HasColumnName("telefone");
             entity.Property(e => e.TipoPessoa)
-                .HasDefaultValueSql("'C'")
-                .HasColumnType("enum('A','D','P','C')")
+                .HasDefaultValueSql("'CLIENTE'")
+                .HasColumnType("enum('ADM','DIRETOR','PRODUTOR','CLIENTE')")
                 .HasColumnName("tipoPessoa");
 
             entity.HasOne(d => d.IdAssociacaoNavigation).WithMany(p => p.Pessoas)
@@ -307,6 +322,7 @@ public partial class FeiragroContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
             entity.Property(e => e.Data)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
                 .HasColumnName("data");
             entity.Property(e => e.IdPessoa).HasColumnType("int(11)");
@@ -334,9 +350,9 @@ public partial class FeiragroContext : DbContext
             entity.Property(e => e.IdReserva).HasColumnType("int(11)");
             entity.Property(e => e.IdFeira).HasColumnType("int(11)");
             entity.Property(e => e.IdProduto).HasColumnType("int(11)");
-            entity.Property(e => e.ReservaHasProdutoFeiracol)
+            entity.Property(e => e.Quantidade)
                 .HasPrecision(10)
-                .HasColumnName("Reserva_has_ProdutoFeiracol");
+                .HasColumnName("quantidade");
 
             entity.HasOne(d => d.IdReservaNavigation).WithMany(p => p.Reservaprodutofeiras)
                 .HasForeignKey(d => d.IdReserva)
@@ -380,7 +396,10 @@ public partial class FeiragroContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.DataVenda).HasColumnType("datetime");
+            entity.Property(e => e.Data)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("datetime")
+                .HasColumnName("data");
             entity.Property(e => e.IdCliente).HasColumnType("int(11)");
             entity.Property(e => e.IdProdutor).HasColumnType("int(11)");
 

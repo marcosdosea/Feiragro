@@ -2,7 +2,6 @@
 using Core;
 using Core.Service;
 using FeiragroWeb.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeiragroWeb.Controllers
