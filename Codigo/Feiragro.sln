@@ -5,12 +5,14 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeiragroWeb", "FeiragroWeb\FeiragroWeb.csproj", "{517995EC-904E-4499-A1F0-45BC6A9A7B4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A7812092-AF7F-4BF6-9119-456C8862A3D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{A7812092-AF7F-4BF6-9119-456C8862A3D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{4EDD2865-7884-4C05-82D5-5015A58ECA00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{4EDD2865-7884-4C05-82D5-5015A58ECA00}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A7812092-AF7F-4BF6-9119-456C8862A3D6} = {A7812092-AF7F-4BF6-9119-456C8862A3D6}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeiragroWebTests2", "FeiragroWebTests2\FeiragroWebTests2.csproj", "{47AF92DE-19AE-46C2-A75C-25D9588554D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{4EDD2865-7884-4C05-82D5-5015A58ECA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EDD2865-7884-4C05-82D5-5015A58ECA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EDD2865-7884-4C05-82D5-5015A58ECA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47AF92DE-19AE-46C2-A75C-25D9588554D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47AF92DE-19AE-46C2-A75C-25D9588554D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47AF92DE-19AE-46C2-A75C-25D9588554D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47AF92DE-19AE-46C2-A75C-25D9588554D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
