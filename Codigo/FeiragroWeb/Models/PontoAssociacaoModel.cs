@@ -41,6 +41,7 @@ namespace FeiragroWeb.Models
         public virtual ICollection<Feira> Feiras { get; set; } = new List<Feira>();
 
         public virtual Associacao IdAssociacaoNavigation { get; set; } = null!;
+        public string Nome { get; set; }
     }
 
 }
