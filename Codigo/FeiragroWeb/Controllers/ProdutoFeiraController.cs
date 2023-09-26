@@ -28,9 +28,9 @@ namespace FeiragroWeb.Controllers
         }
 
         // GET: ProdutoFeiraController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int idFeira, int idProduto)
         {
-            Produtofeira produtofeira = produtofeiraService.Get(id);
+            Produtofeira produtofeira = produtofeiraService.Get(idFeira, idProduto);
             ProdutoFeiraModel produtofeiraModel = mapper.Map<ProdutoFeiraModel>(produtofeira);
             return View(produtofeiraModel);
         }
@@ -56,9 +56,9 @@ namespace FeiragroWeb.Controllers
 
 
         // GET: ProdutoFeiraController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int idFeira, int idProduto)
         {
-            Produtofeira produtofeira = produtofeiraService.Get(id);
+            Produtofeira produtofeira = produtofeiraService.Get(idFeira, idProduto);
             ProdutoFeiraModel produtoFeiraModel = mapper.Map<ProdutoFeiraModel>(produtofeira);
             return View(produtoFeiraModel);
         }
@@ -76,20 +76,12 @@ namespace FeiragroWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: ProdutoFeiraController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            Produtofeira produtofeira = produtofeiraService.Get(id);
-            ProdutoFeiraModel ProdutoFeiraModel = mapper.Map<ProdutoFeiraModel>(produtofeira);
-            return View(ProdutoFeiraModel);
-        }
-
         // POST: ProdutoFeiraController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int idFeira, int idProduto)
         {
-            produtofeiraService.Delete(id);
+            produtofeiraService.Delete(idFeira, idProduto);
             return RedirectToAction(nameof(Index));
         }
     }

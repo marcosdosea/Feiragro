@@ -21,7 +21,7 @@ namespace Service
         {
             _context.Add(produtofeira);
             _context.SaveChanges();
-            return produtofeira.IdProduto;
+            return produtofeira.IdFeira;
         }
 
         /// <summary>
@@ -29,13 +29,11 @@ namespace Service
         /// </summary>
         /// <param name="produtofeira"></param>
         /// <returns></returns>
-        public void Delete(Produtofeira produtofeira)
+        public void Delete(int idFeira, int idProduto)
         {
-            var produtoFeira = _context.Produtofeiras
-            .SingleOrDefault(produtoFeiraContext => produtoFeiraContext.IdProduto ==
-           produtofeira.IdProduto && produtoFeiraContext.IdFeira == produtofeira.IdFeira);
-            _context.Produtofeiras.Remove(produtoFeira);
-            _context.SaveChanges();
+
+            var produtoFeira = _context.Produtofeiras.Find(idFeira, idProduto);
+            _context.Remove(produtoFeira!);
         }
 
         /// <summary>
@@ -54,11 +52,9 @@ namespace Service
         /// </summary>
         /// <param name="produtofeira"></param>
         /// <returns>O Produto da feira</returns>
-        public Produtofeira Get(Produtofeira produtofeira)
+        public Produtofeira Get(int idFeira, int idProduto)
         {
-            return _context.Produtofeiras
-           .SingleOrDefault(produtoFeiraContext => produtoFeiraContext.IdProduto ==
-           produtofeira.IdProduto && produtoFeiraContext.IdFeira == produtofeira.IdFeira);
+            return _context.Produtofeiras.Find(idFeira, idProduto)!;
         }
 
         /// <summary>
@@ -75,10 +71,10 @@ namespace Service
         /// </summary>
         /// <param name="produtofeira"></param>
         /// <returns></returns>
-        public IEnumerable<Produtofeira> GetByNome(string nome)
+        public IEnumerable<Produtofeira> GetByIdFeira(int idFeira)
         {
             return _context.Produtofeiras
-            .Where(produtofeira => produtofeira.IdProdutoNavigation.Nome == nome)
+            .Where(produtofeira => produtofeira.IdFeira == idFeira)
             .ToList();
         }
     }
