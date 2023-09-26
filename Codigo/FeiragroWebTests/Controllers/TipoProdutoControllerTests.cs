@@ -62,7 +62,7 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
             TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
             Assert.AreEqual("Fruta", tipoProdutoModel.Nome);
-          
+
         }
 
 
@@ -201,7 +201,7 @@ namespace FeiragroWeb.Controllers.Tests
                 {
                     Id = 1,
                     Nome = "Doce",
-                    
+
                 },
                 new Tipoproduto
                 {
@@ -212,7 +212,7 @@ namespace FeiragroWeb.Controllers.Tests
                 {
                     Id = 3,
                     Nome = "Folhas"
-                  
+
                 },
             };
         }
