@@ -1,0 +1,43 @@
+.f-input-text {
+    color: black;
+    border-radius: 4px;
+    border: 2px solid black;
+    padding: 2px 7px;
+}
+.f-input-text:focus {
+    outline: 0px solid #299742;
+    border: 2px solid #299742;
+    caret-color: green;
+}
+.f-input-text-blocked {
+    color: black;
+    border-radius: 4px;
+    border: 2px solid #299742;
+    background: #F1EDED;
+    padding: 2px 10px;
+}
+.f-input-text-search-root {
+    display: flex;
+}
+.f-input-text-search {
+    color: black;
+    border-radius: 10px;
+    padding: 2px 35px 2px 10px;
+    width: 100%;
+}
+.f-input-text-search:focus {
+    outline: 0px;
+    border: 2px solid #299742;
+    caret-color: green;
+}
+#f-input-icon-search {
+    margin: 4px 0px 0px -30px;
+    width: 25px;
+    height: 25px;
+    background-image: url("../assets/imagens/icons/icon-search.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#f-input-icon-search:hover{
+    cursor:pointer;
+}
