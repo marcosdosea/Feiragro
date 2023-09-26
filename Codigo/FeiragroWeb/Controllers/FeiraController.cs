@@ -5,6 +5,7 @@ using FeiragroWeb.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service;
+using System.Diagnostics;
 
 namespace FeiragroWeb.Controllers
 {
@@ -38,6 +39,7 @@ namespace FeiragroWeb.Controllers
         // GET: FeiraController/Create
         public ActionResult Create()
         {
+            Debug.WriteLine("Entrando na tela de criação");
             return View();
         }
 
@@ -46,10 +48,24 @@ namespace FeiragroWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FeiraModel feiraModel)
         {
+            Debug.WriteLine("Essa pexte");
+            
             if (ModelState.IsValid)
             {
-                var feira = mapper.Map<Feira>(feiraModel);
-                feiraService.Create(feira);
+                try
+                {
+                    var feira = mapper.Map<Feira>(feiraModel);
+                    Debug.WriteLine("Feira sendo adicionada");
+                    feiraService.Create(feira);
+                }catch(Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("Erro ao adicionar Feira");
+                Debug.WriteLine(ModelState.ToString());
             }
             return RedirectToAction(nameof(Index));
         }
