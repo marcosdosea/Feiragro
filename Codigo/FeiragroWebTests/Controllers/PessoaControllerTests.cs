@@ -34,6 +34,147 @@ namespace FeiragroWeb.Controllers.Tests
             controller = new PessoaController(mockService.Object, mapper);
         }
 
+        [TestMethod()]
+        public void IndexTest_Valido()
+        {
+            // Act
+            var result = controller?.Index();
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result!;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<PessoaModel>));
+
+            List<PessoaModel>? lista = (List<PessoaModel>)viewResult.ViewData.Model!;
+            Assert.AreEqual(3, lista.Count);
+        }
+
+        [TestMethod()]
+        public void DetailsTest_Valido()
+        {
+            // Act
+            var result = controller?.Details(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result!;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PessoaModel));
+            PessoaModel pessoaModel = (PessoaModel)viewResult.ViewData.Model!;
+            Console.WriteLine(pessoaModel.Nome);
+            Assert.AreEqual("Verenilson Vere", pessoaModel.Nome);
+            Assert.AreEqual("12345678912",pessoaModel.Cpf);
+            Assert.AreEqual(DateTime.Parse("1996-06-21"), pessoaModel.DataNascimento);
+            Assert.AreEqual("999999999", pessoaModel.Telefone);
+            Assert.AreEqual("PRODUTOR", pessoaModel.TipoPessoa);
+            Assert.AreEqual("verelindo@gmail.com", pessoaModel.Email);
+            Assert.AreEqual(8, pessoaModel.IdAssociacao);
+        }
+
+        public void CreateTest_Get_Valido()
+        {
+            // Act
+            var result = controller?.Create();
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod()]
+        public void CreateTest_Valid()
+        {
+            // Act
+            var result = controller?.Create(GetNewPessoa());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
+
+        [TestMethod()]
+        public void CreateTest_Post_Invalid()
+        {
+            // Arrange
+            controller?.ModelState.AddModelError("Nome", "Campo requerido");
+
+            // Act
+            var result = controller?.Create(GetNewPessoa());
+
+            // Assert
+            Assert.AreEqual(1, controller?.ModelState.ErrorCount);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
+
+        [TestMethod()]
+        public void EditTest_Get_Valid()
+        {
+            // Act
+            var result = controller?.Edit(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result!;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PessoaModel));
+            PessoaModel pessoaModel = (PessoaModel)viewResult.ViewData.Model!;
+            Assert.AreEqual(1,pessoaModel.Id);
+            Assert.AreEqual("Verenilson Vere", pessoaModel.Nome);
+            Assert.AreEqual("12345678912", pessoaModel.Cpf);
+            Assert.AreEqual(DateTime.Parse("1996-06-21"), pessoaModel.DataNascimento);
+            Assert.AreEqual("999999999", pessoaModel.Telefone);
+            Assert.AreEqual("PRODUTOR", pessoaModel.TipoPessoa);
+            Assert.AreEqual("verelindo@gmail.com", pessoaModel.Email);
+            Assert.AreEqual(8, pessoaModel.IdAssociacao);
+        }
+
+        [TestMethod()]
+        public void EditTest_Post_Valid()
+        {
+            // Act
+            var result = controller?.Edit(GetTargetPessoaModel().Id, GetTargetPessoaModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
+
+        [TestMethod()]
+        public void DeleteTest_Post_Valid()
+        {
+            // Act
+            var result = controller?.Delete(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result!;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PessoaModel));
+            PessoaModel pessoaModel = (PessoaModel)viewResult.ViewData.Model!;
+            Assert.AreEqual(1, pessoaModel.Id);
+            Assert.AreEqual("Verenilson Vere", pessoaModel.Nome);
+            Assert.AreEqual("12345678912", pessoaModel.Cpf);
+            Assert.AreEqual(DateTime.Parse("1996-06-21"), pessoaModel.DataNascimento);
+            Assert.AreEqual("999999999", pessoaModel.Telefone);
+            Assert.AreEqual("PRODUTOR", pessoaModel.TipoPessoa);
+            Assert.AreEqual("verelindo@gmail.com", pessoaModel.Email);
+            Assert.AreEqual(8, pessoaModel.IdAssociacao);
+        }
+
+        [TestMethod()]
+        public void DeleteTest_Get_Valid()
+        {
+            // Act
+            var result = controller?.Delete(GetTargetPessoaModel().Id, GetTargetPessoaModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
 
         private static PessoaModel GetNewPessoa()
         {
@@ -48,7 +189,6 @@ namespace FeiragroWeb.Controllers.Tests
                 Email = "wwwwqq@gmail.com",
                 IdAssociacao = null,
             };
-
         }
         private static Pessoa GetTargetPessoa()
         {
