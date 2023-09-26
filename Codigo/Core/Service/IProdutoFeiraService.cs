@@ -2,12 +2,12 @@
 {
     public interface IProdutoFeiraService
     {
-        public int Get(Produtofeira produtofeira);
+        public Produtofeira Get(int idFeira, int idProduto);
         public int Create(Produtofeira produtofeira);
-        public int Edit(Produtofeira produtofeira);
-        public bool Delete(Produtofeira produtofeira);
+        public void Edit(Produtofeira produtofeira);
+        public void Delete(int idFeira, int idProduto);
 
         IEnumerable<Produtofeira> GetAll();
-        IEnumerable<Produtofeira> GetByNome(string nome);
+        IEnumerable<Produtofeira> GetByIdFeira(int idFeira);
     }
 }
