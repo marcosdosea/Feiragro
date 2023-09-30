@@ -10,61 +10,72 @@ using Microsoft.AspNetCore.Mvc;
 namespace FeiragroWeb.Controllers.Tests
 {
     [TestClass()]
-    public class TipoProdutoControllerTests
+    public class PontoAssociacaoControllerTests
     {
-        private static TipoProdutoController? controller;
+        private static PontoAssociacaoController? controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            var mockService = new Mock<ITipoProdutoService>();
+            var mockService = new Mock<IPontoAssociacaoService>();
 
             IMapper mapper = new MapperConfiguration(cfg =>
-                cfg.AddProfile(new TipoProdutoProfile())).CreateMapper();
+                cfg.AddProfile(new PontoAssociacaoProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                .Returns(GetTestTipoProdutos());
+                       .Returns(GetTestPontoAssociacao());
             mockService.Setup(service => service.Get(1))
-                .Returns(GetTargetTipoProduto());
-            mockService.Setup(service => service.Edit(It.IsAny<Tipoproduto>()))
+                .Returns(GetTargetPontoAssociacao());
+            mockService.Setup(service => service.Edit(It.IsAny<Pontoassociacao>()))
                 .Verifiable();
-            mockService.Setup(service => service.Create(It.IsAny<Tipoproduto>()))
+            mockService.Setup(service => service.Create(It.IsAny<Pontoassociacao>()))
                 .Verifiable();
-            controller = new TipoProdutoController(mockService.Object, mapper);
+            controller = new PontoAssociacaoController(mockService.Object, mapper);
+        }
+
+        private Pontoassociacao GetTargetPontoAssociacao()
+        {
+            throw new NotImplementedException();
+        }
+
+        private IEnumerable<Pontoassociacao> GetTestPontoAssociacao()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void PontoAssociacaoControllerTest()
+        {
+            Assert.Fail();
         }
 
         [TestMethod()]
         public void IndexTest_Valido()
         {
-            // Act
             var result = controller?.Index();
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result!;
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<TipoProdutoModel>));
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<PontoAssociacaoModel>));
 
-            List<TipoProdutoModel>? lista = (List<TipoProdutoModel>)viewResult.ViewData.Model!;
+            List<PontoAssociacaoModel>? lista = (List<PontoAssociacaoModel>)viewResult.ViewData.Model!;
             Assert.AreEqual(3, lista.Count);
         }
-
 
         [TestMethod()]
         public void DetailsTest_Valido()
         {
-            // Act
             var result = controller?.Details(1);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result!;
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
-            TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("Fruta", tipoProdutoModel.Nome);
-
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PontoAssociacaoModel));
+            PontoAssociacaoModel pontoAssociacaoModel = (PontoAssociacaoModel)viewResult.ViewData.Model!;
+            Assert.AreEqual("COAGRO", pontoAssociacaoModel.Nome);
         }
-
 
         [TestMethod()]
         public void CreateTest_Get_Valido()
@@ -75,12 +86,11 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
-
         [TestMethod()]
         public void CreateTest_Valid()
         {
             // Act
-            var result = controller?.Create(GetNewTipoProduto());
+            var result = controller?.Create(GetNewPontoAssociacao());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -97,7 +107,7 @@ namespace FeiragroWeb.Controllers.Tests
             controller?.ModelState.AddModelError("Nome", "Campo requerido");
 
             // Act
-            var result = controller?.Create(GetNewTipoProduto());
+            var result = controller?.Create(GetNewPontoAssociacao());
 
             // Assert
             Assert.AreEqual(1, controller?.ModelState.ErrorCount);
@@ -106,7 +116,6 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.IsNull(redirectToActionResult.ControllerName);
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
-
 
         [TestMethod()]
         public void EditTest_Get_Valid()
@@ -119,7 +128,7 @@ namespace FeiragroWeb.Controllers.Tests
             ViewResult viewResult = (ViewResult)result!;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
             TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("Fruta", tipoProdutoModel.Nome);
+            Assert.AreEqual("COAGRO", tipoProdutoModel.Nome);
         }
 
 
@@ -127,7 +136,7 @@ namespace FeiragroWeb.Controllers.Tests
         public void EditTest_Post_Valid()
         {
             // Act
-            var result = controller?.Edit(GetTargetTipoProdutoModel().Id, GetTargetTipoProdutoModel());
+            var result = controller?.Edit(GetTargetPontoAssociacaoModel().Id, GetTargetPontoAssociacaoModel());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -148,7 +157,7 @@ namespace FeiragroWeb.Controllers.Tests
             ViewResult viewResult = (ViewResult)result!;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
             TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("Fruta", tipoProdutoModel.Nome);
+            Assert.AreEqual("COAGRO", tipoProdutoModel.Nome);
         }
 
 
@@ -156,7 +165,7 @@ namespace FeiragroWeb.Controllers.Tests
         public void DeleteTest_Get_Valid()
         {
             // Act
-            var result = controller?.Delete(GetTargetTipoProdutoModel().Id, GetTargetTipoProdutoModel());
+            var result = controller?.Delete(GetTargetPontoAssociacaoModel().Id, GetTargetPontoAssociacaoModel());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -164,56 +173,22 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.IsNull(redirectToActionResult.ControllerName);
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
-
-        private static TipoProdutoModel GetNewTipoProduto()
+        private static PontoAssociacaoModel GetNewPontoAssociacao()
         {
-            return new TipoProdutoModel
+            return new PontoAssociacaoModel
             {
                 Id = 4,
-                Nome = "Pimenta"
+                Nome = "EMDAGRO"
             };
 
         }
-        private static Tipoproduto GetTargetTipoProduto()
-        {
-            return new Tipoproduto
-            {
-                Id = 1,
-                Nome = "Fruta"
-            };
-        }
 
-        private static TipoProdutoModel GetTargetTipoProdutoModel()
+        private static PontoAssociacaoModel GetTargetPontoAssociacaoModel()
         {
-            return new TipoProdutoModel
+            return new PontoAssociacaoModel
             {
                 Id = 2,
-                Nome = "Fruta"
-            };
-        }
-
-
-        private static IEnumerable<Tipoproduto> GetTestTipoProdutos()
-        {
-            return new List<Tipoproduto>
-            {
-                new Tipoproduto
-                {
-                    Id = 1,
-                    Nome = "Doce",
-
-                },
-                new Tipoproduto
-                {
-                    Id = 2,
-                    Nome = "Fruta"
-                },
-                new Tipoproduto
-                {
-                    Id = 3,
-                    Nome = "Folhas"
-
-                },
+                Nome = "COAGRO"
             };
         }
     }
