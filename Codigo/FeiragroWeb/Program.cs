@@ -2,6 +2,8 @@ using Core;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 using Service;
+using Microsoft.AspNetCore.Identity;
+using FeiragroWeb.Areas.Identity.Data;
 
 namespace FeiragroWeb
 {
@@ -17,11 +19,19 @@ namespace FeiragroWeb
             builder.Services.AddTransient<IProdutoService, ProdutoService>();
             builder.Services.AddTransient<IPontoAssociacaoService, PontoAssociacaoService>();
             builder.Services.AddTransient<IFeiraService, FeiraService>();
-          
+
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddDbContext<FeiragroContext>(
                 options => options.UseMySQL(builder.Configuration.GetConnectionString("FeiragroDatabase")!));
+            builder.Services.AddDbContext<IdentityContext>(
+                options => options.UseMySQL(builder.Configuration.GetConnectionString("FeiragroDatabase")!));
+
+            builder.Services.AddDefaultIdentity<UsuarioIdentity>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+            }
+            ).AddEntityFrameworkStores<IdentityContext>();
 
             var app = builder.Build();
 
@@ -37,8 +47,10 @@ namespace FeiragroWeb
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
