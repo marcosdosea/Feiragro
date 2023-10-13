@@ -2,10 +2,12 @@
 using Core;
 using Core.Service;
 using FeiragroWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeiragroWeb.Controllers
 {
+    [Authorize]
     public class PessoaController : Controller
     {
         private readonly IPessoaService pessoaService;
@@ -19,7 +21,7 @@ namespace FeiragroWeb.Controllers
         }
 
 
-
+        [Authorize(Roles = "")]
         // GET: PessoaController
         public ActionResult Index()
         {
