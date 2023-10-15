@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Core;
-using FeiragroWeb.Models;
+using FeiragroAPI.Models;
 
-namespace FeiragroWeb.Mappers
+namespace FeiragroAPI.Mappers
 {
     public class PessoaProfile : Profile
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FeiragroWeb.Models
+namespace FeiragroAPI.Models
 {
     public class PessoaModel
     {
