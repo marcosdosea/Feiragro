@@ -16,3 +16,122 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+.f-input-text {
+    color: black;
+    border-radius: 4px;
+    border: 2px solid black;
+    padding: 2px 7px;
+}
+
+    .f-input-text:focus {
+        outline: 0px solid #299742;
+        border: 2px solid #299742;
+        caret-color: green;
+    }
+
+.f-input-text-blocked {
+    color: black;
+    border-radius: 4px;
+    border: 2px solid #299742;
+    background: #F1EDED;
+    padding: 2px 10px;
+}
+
+.f-input-text-search-root {
+    display: flex;
+}
+
+.f-input-text-search {
+    color: black;
+    border-radius: 10px;
+    padding: 2px 35px 2px 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+    .f-input-text-search:focus {
+        outline: 0px;
+        border: 2px solid #299742;
+        caret-color: green;
+    }
+
+.f-button-green {
+    background: #299742;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    padding: 7px 35px 7px 35px;
+    transition: background 0.5s ease;
+}
+
+    .f-button-green:hover {
+        background: #3DD65F;
+    }
+
+.f-button-normal {
+    background: #EAF5EC;
+    color: #185B27;
+    border-radius: 8px;
+    border: 1px solid #299742;
+    font-weight: bold;
+    padding: 7px 35px 7px 35px;
+    transition: background 0.7s ease;
+}
+
+    .f-button-normal:hover {
+        background: #3DD65F;
+        color: white;
+    }
+
+.f-button-cancel {
+    border: none;
+    color: black;
+    font-weight: bold;
+    background: #DADFDC;
+    padding: 7px 35px 7px 35px;
+    border-radius: 8px;
+    transition: background 0.7s ease;
+}
+
+    .f-button-cancel:hover {
+        background: black;
+        color: white;
+    }
+
+.f-logo-text {
+    width: 100px;
+    height: 19px;
+    background-image: url("../assets/imagens/logo/feiragro-logo-text.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -5px;
+}
+
+#f-input-icon-search {
+    margin: 4px 0px 0px -30px;
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/imagens/icons/icon-search.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#f-input-icon-search:hover {
+    cursor: pointer;
+}
+
+#f-icon-localizacao {
+    margin: 4px 0px 0px -30px;
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/imagens/icons/icon-search.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: red;
+}
+
+#f-icon-localizacao:hover {
+    cursor: pointer;
+}
