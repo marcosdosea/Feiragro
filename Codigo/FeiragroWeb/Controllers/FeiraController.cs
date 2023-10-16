@@ -11,19 +11,19 @@ namespace FeiragroWeb.Controllers
 {
     public class FeiraController : Controller
     {
-        private readonly IFeiraService feiraService;
+        private readonly IFeiraService _feiraService;
         private readonly IMapper mapper;
 
         public FeiraController(IFeiraService feiraService, IMapper mapper)
         {
-            this.feiraService = feiraService;
+            _feiraService = feiraService;
             this.mapper = mapper;
         }
 
         // GET: FeiraController
         public ActionResult Index()
         {
-            var listaFeiras = feiraService.GetAll();
+            var listaFeiras = _feiraService.GetAll();
             var listaFeirasModel = mapper.Map<List<FeiraModel>>(listaFeiras);
             return View(listaFeirasModel);
         }
@@ -31,7 +31,7 @@ namespace FeiragroWeb.Controllers
         // GET: FeiraController/Details/5
         public ActionResult Details(int id)
         {
-            Feira feira = feiraService.Get(id);
+            Feira feira = _feiraService.Get(id);
             FeiraModel feiraModel = mapper.Map<FeiraModel>(feira);
             return View(feiraModel);
         }
@@ -39,7 +39,6 @@ namespace FeiragroWeb.Controllers
         // GET: FeiraController/Create
         public ActionResult Create()
         {
-            Debug.WriteLine("Entrando na tela de criação");
             return View();
         }
 
@@ -48,15 +47,13 @@ namespace FeiragroWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FeiraModel feiraModel)
         {
-            Debug.WriteLine("Essa pexte");
             
             if (ModelState.IsValid)
             {
                 try
                 {
                     var feira = mapper.Map<Feira>(feiraModel);
-                    Debug.WriteLine("Feira sendo adicionada");
-                    feiraService.Create(feira);
+                    _feiraService.Create(feira);
                 }catch(Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
@@ -73,7 +70,7 @@ namespace FeiragroWeb.Controllers
         // GET: FeiraController/Edit/5
         public ActionResult Edit(int id)
         {
-            Feira feira = feiraService.Get(id);
+            Feira feira = _feiraService.Get(id);
             FeiraModel feiraModel = mapper.Map<FeiraModel>(feira);
             return View(feiraModel);
         }
@@ -81,12 +78,12 @@ namespace FeiragroWeb.Controllers
         // POST: FeiraController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, FeiraModel feiraModel)
+        public ActionResult Edit(FeiraModel feiraModel)
         {
             if (ModelState.IsValid)
             {
                 var feira = mapper.Map<Feira>(feiraModel);
-                feiraService.Edit(feira);
+                _feiraService.Edit(feira);
             }
             return RedirectToAction(nameof(Index));
         }
@@ -94,7 +91,7 @@ namespace FeiragroWeb.Controllers
         // GET: FeiraController/Delete/5
         public ActionResult Delete(int id)
         {
-            Feira feira = feiraService.Get(id);
+            Feira feira = _feiraService.Get(id);
             FeiraModel feiraModel = mapper.Map<FeiraModel>(feira);
             return View(feiraModel);
         }
@@ -104,7 +101,7 @@ namespace FeiragroWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FeiraModel feiraModel)
         {
-            feiraService.Delete(id);
+            _feiraService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
     }
