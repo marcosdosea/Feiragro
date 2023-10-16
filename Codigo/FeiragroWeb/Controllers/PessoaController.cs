@@ -21,7 +21,7 @@ namespace FeiragroWeb.Controllers
         }
 
 
-        [Authorize(Roles = "")]
+        [Authorize(Roles = "CLIENTE")]
         // GET: PessoaController
         public ActionResult Index()
         {
