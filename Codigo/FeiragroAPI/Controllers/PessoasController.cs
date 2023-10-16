@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Core;
 using Core.Service;
-using FeiragroWeb.Models;
+using FeiragroAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

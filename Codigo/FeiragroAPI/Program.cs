@@ -19,6 +19,7 @@ namespace FeiragroAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddTransient<IPessoaService, PessoaService>();
+            builder.Services.AddTransient<IAssociacaoService, AssociacaoService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddDbContext<FeiragroContext>(
