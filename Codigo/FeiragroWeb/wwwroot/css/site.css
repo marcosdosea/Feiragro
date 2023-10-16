@@ -118,20 +118,57 @@ body {
     background-size: cover;
 }
 
-#f-input-icon-search:hover {
-    cursor: pointer;
+#f-icon-localizacao {
+    width: 18px;
+    height: 23px;
+    background-image: url("../assets/imagens/icons/icon-localizacao.webp");
+    filter: invert(100%);
+    margin: 9px -5px 0px 0px;
 }
 
-#f-icon-localizacao {
-    margin: 4px 0px 0px -30px;
-    width: 20px;
-    height: 20px;
-    background-image: url("../assets/imagens/icons/icon-search.webp");
+#f-icon-avatar {
+    width: 22px;
+    height: 22px;
+    background-image: url("../assets/imagens/icons/icon-avatar.webp");
+    margin: 10px -5px 0px 0px;
+}
+
+#f-icon-carrinho {
+    width: 22px;
+    height: 22px;
+    background-image: url("../assets/imagens/icons/icon-carrinho.webp");
+    margin: 10px -5px 0px 0px;
+}
+
+.f-icon-navbar {
     background-repeat: no-repeat;
     background-size: cover;
-    background: red;
 }
 
-#f-icon-localizacao:hover {
+.f-icon-navbar:hover {
     cursor: pointer;
+}
+
+.hide-nome-navbar{
+    display:block;
+}
+
+.pagamento{
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    #f-icon-avatar {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .hide-nome-navbar{
+        display:none;
+    }
+}
+
+@media (max-width: 768px) {
+    .pagamento{
+        margin-top: 4px;
+    }
 }
