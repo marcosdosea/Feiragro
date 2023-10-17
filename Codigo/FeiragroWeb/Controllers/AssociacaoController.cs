@@ -20,7 +20,7 @@ namespace FeiragroWeb.Controllers
         public ActionResult Index()
         {
             var listarAssociacoes = associacaoService.GetAll();
-            var listarAssociacoesModel = mapper.Map<List<AssociacaoModel>>(listarAssociacoes);
+            var listarAssociacoesModel = mapper.Map<List<PontoAssociacaoModel>>(listarAssociacoes);
             return View(listarAssociacoesModel);
         }
 
@@ -28,7 +28,7 @@ namespace FeiragroWeb.Controllers
         public ActionResult Details(int id)
         {
             Associacao associacao = associacaoService.Get(id);
-            AssociacaoModel associacaoModel = mapper.Map<AssociacaoModel>(associacao);
+            PontoAssociacaoModel associacaoModel = mapper.Map<PontoAssociacaoModel>(associacao);
             return View(associacaoModel);
         }
 
@@ -41,7 +41,7 @@ namespace FeiragroWeb.Controllers
         // POST: AssociacaoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AssociacaoModel associacaoModel)
+        public ActionResult Create(PontoAssociacaoModel associacaoModel)
         {
             if(ModelState.IsValid)
             {
@@ -60,14 +60,14 @@ namespace FeiragroWeb.Controllers
         public ActionResult Edit(int id)
         {
             Associacao associacao = associacaoService.Get(id);
-            AssociacaoModel associacaoModel = mapper.Map<AssociacaoModel>(associacao);
+            PontoAssociacaoModel associacaoModel = mapper.Map<PontoAssociacaoModel>(associacao);
             return View(associacaoModel);
         }
 
         // POST: AssociacaoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, AssociacaoModel associacaoModel)
+        public ActionResult Edit(int id, PontoAssociacaoModel associacaoModel)
         {
             if(ModelState.IsValid)
             {
@@ -81,14 +81,14 @@ namespace FeiragroWeb.Controllers
         public ActionResult Delete(int id)
         {
             Associacao associacao = associacaoService.Get(id);
-            AssociacaoModel associacaoModel = mapper.Map<AssociacaoModel>(associacao);
+            PontoAssociacaoModel associacaoModel = mapper.Map<PontoAssociacaoModel>(associacao);
             return View(associacaoModel);
         }
 
         // POST: AssociacaoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, AssociacaoModel associacaoModel)
+        public ActionResult Delete(int id, PontoAssociacaoModel associacaoModel)
         {
             associacaoService.Delete(id);
             return RedirectToAction(nameof(Index));

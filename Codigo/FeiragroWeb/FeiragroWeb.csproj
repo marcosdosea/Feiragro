@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\PontoAssociacao\Create.cshtml" />
+    <Content Remove="Views\PontoAssociacao\Delete.cshtml" />
+    <Content Remove="Views\PontoAssociacao\Details.cshtml" />
+    <Content Remove="Views\PontoAssociacao\Edit.cshtml" />
+    <Content Remove="Views\PontoAssociacao\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.22" />
@@ -24,6 +32,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\PontoAssociacao\" />
   </ItemGroup>
 
 </Project>

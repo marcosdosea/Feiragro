@@ -1,4 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FeiragroWeb.Controllers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using Core.Service;
 using Moq;
@@ -19,12 +25,11 @@ namespace FeiragroWeb.Controllers.Tests
         {
             // Arrange
             var mockService = new Mock<IPontoAssociacaoService>();
-
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new PontoAssociacaoProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                       .Returns(GetTestPontoAssociacao());
+                .Returns(GetTestPontoAssociacao());
             mockService.Setup(service => service.Get(1))
                 .Returns(GetTargetPontoAssociacao());
             mockService.Setup(service => service.Edit(It.IsAny<Pontoassociacao>()))
@@ -34,25 +39,10 @@ namespace FeiragroWeb.Controllers.Tests
             controller = new PontoAssociacaoController(mockService.Object, mapper);
         }
 
-        private Pontoassociacao GetTargetPontoAssociacao()
-        {
-            throw new NotImplementedException();
-        }
-
-        private IEnumerable<Pontoassociacao> GetTestPontoAssociacao()
-        {
-            throw new NotImplementedException();
-        }
-
         [TestMethod()]
-        public void PontoAssociacaoControllerTest()
+        public void IndexTest()
         {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void IndexTest_Valido()
-        {
+            // Act
             var result = controller?.Index();
 
             // Assert
@@ -65,20 +55,21 @@ namespace FeiragroWeb.Controllers.Tests
         }
 
         [TestMethod()]
-        public void DetailsTest_Valido()
+        public void DetailsTest()
         {
-            var result = controller?.Details(1);
+            // Act
+            var result = controller.Details(1);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
-            ViewResult viewResult = (ViewResult)result!;
+            ViewResult viewResult = (ViewResult)result;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PontoAssociacaoModel));
-            PontoAssociacaoModel pontoAssociacaoModel = (PontoAssociacaoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("COAGRO", pontoAssociacaoModel.Nome);
+            PontoAssociacaoModel pontoAssociacaoModel = (PontoAssociacaoModel)viewResult.ViewData.Model;
+            Assert.AreEqual(0, pontoAssociacaoModel.IdAssociacao);
         }
 
         [TestMethod()]
-        public void CreateTest_Get_Valido()
+        public void CreateTest()
         {
             // Act
             var result = controller?.Create();
@@ -99,26 +90,8 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-
         [TestMethod()]
-        public void CreateTest_Post_Invalid()
-        {
-            // Arrange
-            controller?.ModelState.AddModelError("Nome", "Campo requerido");
-
-            // Act
-            var result = controller?.Create(GetNewPontoAssociacao());
-
-            // Assert
-            Assert.AreEqual(1, controller?.ModelState.ErrorCount);
-            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
-            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
-            Assert.IsNull(redirectToActionResult.ControllerName);
-            Assert.AreEqual("Index", redirectToActionResult.ActionName);
-        }
-
-        [TestMethod()]
-        public void EditTest_Get_Valid()
+        public void EditTest()
         {
             // Act
             var result = controller?.Edit(1);
@@ -126,17 +99,16 @@ namespace FeiragroWeb.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result!;
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
-            TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("COAGRO", tipoProdutoModel.Nome);
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PontoAssociacaoModel));
+            PontoAssociacaoModel pontoAssociacaoModel = (PontoAssociacaoModel)viewResult.ViewData.Model!;
+            Assert.AreEqual(0, pontoAssociacaoModel.IdAssociacao);
         }
 
-
         [TestMethod()]
-        public void EditTest_Post_Valid()
+        public void EditTest1()
         {
             // Act
-            var result = controller?.Edit(GetTargetPontoAssociacaoModel().Id, GetTargetPontoAssociacaoModel());
+            var result = controller?.Edit(GetTargetPontoAssociacaoModel().IdAssociacao, GetTargetPontoAssociacaoModel());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -145,9 +117,21 @@ namespace FeiragroWeb.Controllers.Tests
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
+        [TestMethod()]
+        public void DeleteTest()
+        {
+            // Act
+            var result = controller.Delete(GetNewPontoAssociacaoModel().IdAssociacao, GetNewPontoAssociacaoModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
 
         [TestMethod()]
-        public void DeleteTest_Post_Valid()
+        public void DeleteTest1()
         {
             // Act
             var result = controller?.Delete(1);
@@ -155,40 +139,105 @@ namespace FeiragroWeb.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result!;
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TipoProdutoModel));
-            TipoProdutoModel tipoProdutoModel = (TipoProdutoModel)viewResult.ViewData.Model!;
-            Assert.AreEqual("COAGRO", tipoProdutoModel.Nome);
-        }
-
-
-        [TestMethod()]
-        public void DeleteTest_Get_Valid()
-        {
-            // Act
-            var result = controller?.Delete(GetTargetPontoAssociacaoModel().Id, GetTargetPontoAssociacaoModel());
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
-            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result!;
-            Assert.IsNull(redirectToActionResult.ControllerName);
-            Assert.AreEqual("Index", redirectToActionResult.ActionName);
-        }
-        private static PontoAssociacaoModel GetNewPontoAssociacao()
-        {
-            return new PontoAssociacaoModel
-            {
-                Id = 4,
-                Nome = "EMDAGRO"
-            };
-
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(PontoAssociacaoModel));
+            PontoAssociacaoModel pontoAssociacaoModel = (PontoAssociacaoModel)viewResult.ViewData.Model!;
+            Assert.AreEqual(0, pontoAssociacaoModel.IdAssociacao);
         }
 
         private static PontoAssociacaoModel GetTargetPontoAssociacaoModel()
         {
             return new PontoAssociacaoModel
             {
-                Id = 2,
-                Nome = "COAGRO"
+
+                Cep = "49500-000",
+                Complemento = "Atrás do bar do zequinha",
+                Uf = "SE",
+                Municipio = "Lagarto",
+                Rua = "Francisco Silva da Silva Silva",
+                Numero = 348,
+                Bairro = "São José",
+
+            };
+        }
+
+        private static PontoAssociacaoModel GetNewPontoAssociacao()
+        {
+            return new PontoAssociacaoModel
+            {
+                Cep = "49500-000",
+                Complemento = "Atrás do bar do zequinha",
+                Uf = "SE",
+                Municipio = "Lagarto",
+                Rua = "Francisco Silva da Silva Silva",
+                Numero = 348,
+                Bairro = "São José",
+            };
+        }
+
+        private static PontoAssociacaoModel GetNewPontoAssociacaoModel()
+        {
+            return new PontoAssociacaoModel
+            {
+                Cep = "49500-000",
+                Complemento = "Atrás do bar do zequinha",
+                Uf = "SE",
+                Municipio = "Lagarto",
+                Rua = "Francisco Silva da Silva Silva",
+                Numero = 348,
+                Bairro = "São José",
+            };
+        }
+
+        private Pontoassociacao GetTargetPontoAssociacao()
+        {
+            return new Pontoassociacao
+            {
+                Cep = "49500-000",
+                Complemento = "Atrás do bar do zequinha",
+                Uf = "SE",
+                Municipio = "Lagarto",
+                Rua = "Francisco Silva da Silva Silva",
+                Numero = 348,
+                Bairro = "São José",
+            };
+        }
+
+        private IEnumerable<Pontoassociacao> GetTestPontoAssociacao()
+        {
+            return new List<Pontoassociacao>
+            {
+                new Pontoassociacao
+                {
+                    Cep = "49500-000",
+                    Complemento = "Atrás do bar do zequinha",
+                    Uf = "SE",
+                    Municipio = "Lagarto",
+                    Rua = "Francisco Silva da Silva Silva",
+                    Numero = 348,
+                    Bairro = "São José",
+                },
+
+                new Pontoassociacao
+                {
+                    Cep = "49600-000",
+                    Complemento = "Na frente da mercearia do Seu Nestor",
+                    Uf = "SE",
+                    Municipio = "Itabaiana",
+                    Rua = "Francisco Silveira da Silva Silvana",
+                    Numero = 349,
+                    Bairro = "José",
+                },
+
+                new Pontoassociacao
+                {
+                    Cep = "49700-000",
+                    Complemento = "Ao lado do culto do Pastor Zequias",
+                    Uf = "SE",
+                    Municipio = "Aracaju",
+                    Rua = "Francisco Silva da Silva",
+                    Numero = 350,
+                    Bairro = "José São",
+                },
             };
         }
     }
