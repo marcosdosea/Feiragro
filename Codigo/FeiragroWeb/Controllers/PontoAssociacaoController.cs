@@ -23,7 +23,7 @@ namespace FeiragroWeb.Controllers
         {
             var listaPontoAssociacao = _pontoAssociacaoService.GetAll();
             var listaPontoAssociacaoModel = _mapper.Map<List<PontoAssociacaoModel>>(listaPontoAssociacao);
-            return View(listaPontoAssociacao);
+            return View(listaPontoAssociacaoModel);
         }
 
         // GET: PontoAssociacaoController/Details/5
