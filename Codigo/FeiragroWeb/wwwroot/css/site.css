@@ -1,20 +1,14 @@
 html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 0px;
+}
+
+.f-main{
+    min-height: 480px;
 }
 
 .f-input-text {
@@ -170,5 +164,75 @@ body {
 @media (max-width: 768px) {
     .pagamento{
         margin-top: 4px;
+    }
+}
+
+.f-copy-right{
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.f-footer {
+    background: #299742;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.f-logo-image {
+    width: 100px;
+    height: 117px;
+    background-image: url("../assets/imagens/logo/feiragro-logo.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.f-footer-root {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 50px;
+}
+.f-footer-div{
+    margin: 0px 30px;
+}
+
+
+
+.f-footer-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.f-footer-div ul {
+    list-style: none;
+    padding: 0;
+}
+
+.f-footer-div ul a{
+    color:#ffff;
+    text-decoration:none;
+}
+
+.f-footer-div h3 {
+    color: #ffff;
+    font-size:24px;
+}
+
+@media (max-width: 816px) {
+    .f-footer-root{
+        display:block;
+    }
+    .f-logo-image{
+        margin: 0 auto 30px auto;
+    }
+    .f-footer-div{
+        margin: 0px 15px;
+    }
+    .f-footer-div ul a {
+        font-size: 12px;
+    }
+    .f-footer-div h3 {
+        font-size: 16px;
     }
 }
