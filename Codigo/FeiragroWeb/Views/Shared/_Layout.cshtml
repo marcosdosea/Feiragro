@@ -80,14 +80,45 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="f-main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - FeiragroWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="f-footer" >
+        <div class="f-footer-root">
+            <div class="f-logo-div">
+                <div class="f-logo-image"></div>
+            </div>
+            <section class="f-footer-section">
+                <div class="f-footer-div">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Nossa Equipe</a></li>
+                        <li><a href="#">Parceiros e apoio</a></li>
+                    </ul>
+                </div>
+                <div class="f-footer-div">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="#">E-mail</a></li>
+                        <li><a href="#">Telefone</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="f-footer-div">
+                    <h3>Termos e Políticas</h3>
+                    <ul>
+                        <li><a href="#">Termos de uso do site</a></li>
+                        <li><a href="#">Políticas de privacidade</a></li>
+                        <li><a href="#">Políticas de cookies</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="f-copy-right">
+            &copy; 2023 - Feiragro - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
