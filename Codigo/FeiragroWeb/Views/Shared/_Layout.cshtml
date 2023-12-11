@@ -9,42 +9,42 @@
     <link rel="stylesheet" href="~/FeiragroWeb.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #299742;">
-            <div class="container-fluid">
-                <a class="f-logo-text mx-5" asp-area="" asp-controller="Home" asp-action="Index"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <div class="f-input-text-search-root col-4 me-4">
-                        <input type="search" placeholder="Pesquisar" class="f-input-text-search">
-                        <div id="f-input-icon-search"></div>
-                    </div>
-                    <ul class="navbar-nav ms-auto me-4">
-                        <li class="nav-item ">
-                            <div id="f-icon-localizacao" class="f-icon-navbar"></div>
-                        </li>
-                        <li class="nav-item me-2 hide-nome-navbar">
-                            <a class="nav-link text-white">Onde você está?</a>
-                        </li>
-                        <li class="nav-item ">
-                            <div id="f-icon-avatar" class="f-icon-navbar"></div>
-                        </li>
-                        <li class="nav-item me-2 hide-nome-navbar">
-                            <a class="nav-link text-white">Minha conta</a>
-                        </li>
-                        <li class="nav-item ">
-                            <div id="f-icon-carrinho" class="f-icon-navbar"></div>
-                        </li>
-                        <li class="nav-item me-2 pagamento">
-                            <a class="nav-link text-white">R$ 0,00</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="f-header">
+        <nav class="f-nav">
+            <button class="f-nav-hamburguer"></button>
+            <a class="f-logo-text" asp-area="" asp-controller="Home" asp-action="Index"></a>
+            <div class="f-input-text-search-root col-4 f-hide-nav">
+                <input type="search" placeholder="Pesquisar" class="f-input-text-search">
+                <div id="f-input-icon-search"></div>
             </div>
+            <ul class="f-nav-list-desktop">
+                <li><a href="#" class="f-hide-nav">Onde você está?</a></li>
+                <li><a class="f-hide-nav" asp-controller="Home" asp-action="Index">Minha conta</a></li>
+                <li><a href="#" class="">R$ 0,00</a></li>
+            </ul>
+            <ul class="f-nav-list-phone">
+                <li><a class="f-logo-text" asp-area="" asp-controller="Home" asp-action="Index"></a></li>
+                <li><a href="#">Minha conta</a></li>
+                <li><a href="#">Onde você está?</a></li>
+                <li><hr /></li>
+                <li><a href="#">Resumo da conta</a></li>
+                <li><a href="#">Meus dados</a></li>
+                <li><a href="#">Meus pedidos</a></li>
+                <li><a href="#">Alterar senha</a></li>
+                <li><a href="#">Sair</a></li>
+                <li><hr /></li>
+            </ul>
         </nav>
+        <div class="f-show-input-nav">
+            <div class="f-input-text-search-root col-7">
+                <input type="search" placeholder="Pesquisar" class="f-input-text-search">
+                <div id="f-input-icon-search"></div>
+            </div>
+        </div>
+    </header>
+    <br />
+
+    <header>
         <partial name="_LoginPartial" />
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -79,13 +79,13 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div>
         <main role="main" class="f-main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="f-footer" >
+    <footer class="f-footer">
         <div class="f-footer-root">
             <div class="f-logo-div">
                 <div class="f-logo-image"></div>
