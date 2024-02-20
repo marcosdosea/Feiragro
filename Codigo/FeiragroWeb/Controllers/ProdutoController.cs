@@ -2,6 +2,7 @@
 using Core;
 using Core.Service;
 using FeiragroWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace FeiragroWeb.Controllers
             this.produtoService = produtoService;
             this.mapper = mapper;
         }
-
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Index()
         {
             var listaProdutos = produtoService.GetAll();
@@ -25,7 +26,7 @@ namespace FeiragroWeb.Controllers
             return View(listaProdutosModel);
         }
 
-        
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Details(int id)
         {
             Produto produto = produtoService.Get(id);
@@ -33,13 +34,13 @@ namespace FeiragroWeb.Controllers
             return View(produtoModel);
         }
 
-        
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Create()
         {
             return View();
         }
 
-        
+        [Authorize(Roles = "ADMINISTRADOR")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProdutoModel produtoModel)
@@ -53,6 +54,7 @@ namespace FeiragroWeb.Controllers
         }
 
         // GET: ProdutoController/Edit/5
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Edit(int id)
         {
             Produto produto = produtoService.Get(id);
@@ -63,6 +65,7 @@ namespace FeiragroWeb.Controllers
         // POST: ProdutoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Edit(int id, ProdutoModel produtoModel)
         {
             if(ModelState.IsValid)
@@ -74,6 +77,7 @@ namespace FeiragroWeb.Controllers
         }
 
         // GET: ProdutoController/Delete/5
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Delete(int id)
         {
             Produto produto = produtoService.Get(id);
@@ -84,6 +88,7 @@ namespace FeiragroWeb.Controllers
         // POST: ProdutoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Delete(int id, ProdutoModel produtoModel)
         {
             produtoService.Delete(id);
