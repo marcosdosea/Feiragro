@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `feiragro` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `feiragro`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: feiragro
@@ -170,7 +172,7 @@ CREATE TABLE `aspnetuserroles` (
 
 LOCK TABLES `aspnetuserroles` WRITE;
 /*!40000 ALTER TABLE `aspnetuserroles` DISABLE KEYS */;
-INSERT INTO `aspnetuserroles` VALUES ('13099c29-7b72-4440-b450-ff15ee778a25','1'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','1'),('13099c29-7b72-4440-b450-ff15ee778a25','2'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','2'),('13099c29-7b72-4440-b450-ff15ee778a25','3'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','3'),('13099c29-7b72-4440-b450-ff15ee778a25','4');
+INSERT INTO `aspnetuserroles` VALUES ('0c9d1e46-ae0a-49ef-8111-63eff24fe2dd','1'),('13099c29-7b72-4440-b450-ff15ee778a25','1'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','1'),('0c9d1e46-ae0a-49ef-8111-63eff24fe2dd','2'),('13099c29-7b72-4440-b450-ff15ee778a25','2'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','2'),('0c9d1e46-ae0a-49ef-8111-63eff24fe2dd','3'),('13099c29-7b72-4440-b450-ff15ee778a25','3'),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','3'),('0c9d1e46-ae0a-49ef-8111-63eff24fe2dd','4');
 /*!40000 ALTER TABLE `aspnetuserroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +211,7 @@ CREATE TABLE `aspnetusers` (
 
 LOCK TABLES `aspnetusers` WRITE;
 /*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
-INSERT INTO `aspnetusers` VALUES ('13099c29-7b72-4440-b450-ff15ee778a25','profeta.garoto@gmail.com','PROFETA.GAROTO@GMAIL.COM','profeta.garoto@gmail.com','PROFETA.GAROTO@GMAIL.COM',0,'AQAAAAEAACcQAAAAEFEB923LyJJLIOpcbRGcdIrv7aqXnh67uJnMTxTAVGCht87RGW/BDwaGlVzVX3MVBA==','2YMH6YRJEXVYAJH6GIA4RMPZXJ5ACDTH','1ec2923e-0056-4d0d-8eb7-25b80c0c5846',NULL,0,0,NULL,1,0),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','galvoninha@gmail.com','GALVONINHA@GMAIL.COM','galvoninha@gmail.com','GALVONINHA@GMAIL.COM',0,'AQAAAAEAACcQAAAAEBCrOAOYxRKN/dnVCG/ULDz4a3XY1yiVXXiPqNqnmWwKg7u1/3zp4z536l4rHMm5yQ==','L3QAODI5JSRLKS4KAUS4ZN26FKVLIVN7','f7204a20-0e8b-4cd9-a414-60faf0ea03c7',NULL,0,0,NULL,1,0);
+INSERT INTO `aspnetusers` VALUES ('0c9d1e46-ae0a-49ef-8111-63eff24fe2dd','nadianne@gmail.com','NADIANNE@GMAIL.COM','nadianne@gmail.com','NADIANNE@GMAIL.COM',0,'AQAAAAEAACcQAAAAECBJkG8DFoNakjUMIAqwCluuYSNiHKlEQOv2nGUF0GjHyswRvn3EqhJXIdUzU4au/g==','KSMIEQFCZZECSKUGECL5PQKLR3EJQ33H','14069e9c-5449-44a2-94c3-4b8de9614731',NULL,0,0,NULL,1,0),('13099c29-7b72-4440-b450-ff15ee778a25','profeta.garoto@gmail.com','PROFETA.GAROTO@GMAIL.COM','profeta.garoto@gmail.com','PROFETA.GAROTO@GMAIL.COM',0,'AQAAAAEAACcQAAAAEFEB923LyJJLIOpcbRGcdIrv7aqXnh67uJnMTxTAVGCht87RGW/BDwaGlVzVX3MVBA==','2YMH6YRJEXVYAJH6GIA4RMPZXJ5ACDTH','1ec2923e-0056-4d0d-8eb7-25b80c0c5846',NULL,0,0,NULL,1,0),('7848cd58-b226-4fe9-8799-6ec3cf7fcb19','galvoninha@gmail.com','GALVONINHA@GMAIL.COM','galvoninha@gmail.com','GALVONINHA@GMAIL.COM',0,'AQAAAAEAACcQAAAAEBCrOAOYxRKN/dnVCG/ULDz4a3XY1yiVXXiPqNqnmWwKg7u1/3zp4z536l4rHMm5yQ==','L3QAODI5JSRLKS4KAUS4ZN26FKVLIVN7','f7204a20-0e8b-4cd9-a414-60faf0ea03c7',NULL,0,0,NULL,1,0);
 /*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +330,7 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id`),
   KEY `fk_Pessoa_Associacao1_idx` (`IdAssociacao`),
   CONSTRAINT `fk_Pessoa_Associacao1` FOREIGN KEY (`IdAssociacao`) REFERENCES `associacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +339,6 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (2,'VereVere KellyKelly','11122233344','1996-11-10','5579999999999','ADM','ververe@gmail.com',NULL);
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +393,7 @@ CREATE TABLE `produto` (
   KEY `idx_nome` (`nome`),
   KEY `fk_Produto_TipoProduto1_idx` (`IdTipoProduto`),
   CONSTRAINT `fk_Produto_TipoProduto1` FOREIGN KEY (`IdTipoProduto`) REFERENCES `tipoproduto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -536,7 +537,7 @@ CREATE TABLE `tipoproduto` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nome_UNIQUE` (`nome`),
   KEY `idx_nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -577,6 +578,10 @@ LOCK TABLES `venda` WRITE;
 /*!40000 ALTER TABLE `venda` DISABLE KEYS */;
 /*!40000 ALTER TABLE `venda` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'feiragro'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -587,4 +592,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-16 16:21:43
+-- Dump completed on 2024-02-20 15:55:28

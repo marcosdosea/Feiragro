@@ -2,6 +2,7 @@
 using Core;
 using Core.Service;
 using FeiragroWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,7 @@ namespace FeiragroWeb.Controllers
         }
 
         // GET: TipoProdutoController/Create
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +47,7 @@ namespace FeiragroWeb.Controllers
         // POST: TipoProdutoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Create(TipoProdutoModel tipoProdutoModel)
         {
             if (ModelState.IsValid)

@@ -44,7 +44,7 @@ namespace FeiragroWeb.Models
 
         [StringLength(12)]
         [RegularExpression(@"^[0-9]{0,10}", ErrorMessage = "O número precisa ter até no máximo 10 dígitos.")]
-        public string? Numero { get; set; } = null!;
+        public string Numero { get; set; } = null!;
 
         [StringLength(80, MinimumLength = 0, ErrorMessage = "O complemento Precisa ter entre 0 a 80 caracteres")]
         public string? Complemento { get; set; }
@@ -53,8 +53,8 @@ namespace FeiragroWeb.Models
         [StringLength(14, MinimumLength = 13, ErrorMessage = "Precisa ter entre 13 a 14 dígitos")]
         public string Telefone { get; set; } = null!;
 
-        public string? Status { get; set; }
+        public string Status { get; set; } = null!;
 
-        public DateTime? Data { get; set; }
+        public DateTime Data { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace FeiragroWeb.Mappers
     {
         public AssociacaoProfile()
         {
-            CreateMap<PontoAssociacaoModel, Associacao>().ReverseMap();
+            CreateMap<AssociacaoModel, Associacao>().ReverseMap();
         }
     }
 }

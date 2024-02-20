@@ -4,8 +4,6 @@ namespace FeiragroWeb.Models
 {
     public class PessoaModel
     {
-        [Display(Name = "Id")]
-        [Required(ErrorMessage = "O Id é obrigatório")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório")]
